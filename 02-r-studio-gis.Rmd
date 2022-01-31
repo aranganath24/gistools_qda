@@ -42,18 +42,21 @@ usa_shapefile
 
 ## Map the spatial dataset 
 
-```{r, fig.asp=0.5}
+```{r, fig.asp=0.5, echo=-1}
+tmap_mode("plot")
 tm_shape(usa_shapefile)+
   tm_polygons()
 ```
 
-```{r}
+```{r, echo=-1}
+tmap_mode("plot")
 usa_map<-tm_shape(usa_shapefile)+
             tm_polygons()
 ```
 
 
-```{r, fig.asp=0.5}
+```{r, fig.asp=0.5, echo=-1}
+tmap_mode("plot")
 usa_map
 ```
 
@@ -93,7 +96,8 @@ usa_shapefile_trifecta
 
 Start with a rough map:
 
-```{r, fig.asp=0.5}
+```{r, fig.asp=0.5, echo=-1}
+tmap_mode("plot")
 usa_trifecta_map<-tm_shape(usa_shapefile_trifecta)+
                     tm_polygons(col="Composition")
 
@@ -102,13 +106,15 @@ usa_trifecta_map
 
 Adjust the color scheme, such that it is red for a Republican trifecta, dark blue for a democratic trifecta, and 
 
-```{r}
+```{r, echo=-1}
+tmap_mode("plot")
 # Sets composition variable as factor
 usa_shapefile_trifecta<-usa_shapefile_trifecta %>% 
                           mutate(Composition=factor(Composition, levels=c("Democratic Trifecta", "Republican Trifecta", "Divided Government")))
 ```
 
-```{r, fig.asp=0.5}
+```{r, fig.asp=0.5, echo=-1}
+tmap_mode("plot")
 # Maps data with custom colors; note the changed order in the legend
 colors<-c("navy", "red3", "seashell")
 usa_trifecta_map<-tm_shape(usa_shapefile_trifecta)+
@@ -120,7 +126,8 @@ usa_trifecta_map
 
 Now, let's shift the legend, remove the legend title, and add a title for the map:
 
-```{r, fig.asp=0.5}
+```{r, fig.asp=0.5, echo=-1}
+tmap_mode("plot")
 usa_trifecta_map<-usa_trifecta_map<-tm_shape(usa_shapefile_trifecta)+
                                       tm_polygons(col="Composition", 
                                                   palette=colors,
@@ -197,11 +204,16 @@ tmap_mode("view")
 usa_trifecta_map_unshifed
 ```
 
+```{r, echo=F}
+tmap_mode("plot")
+```
+
+
 # Exporting Maps from R Studio
 
 
 
-
+on factors: [https://r4ds.had.co.nz/factors.html](https://r4ds.had.co.nz/factors.html). 
 
 
 
