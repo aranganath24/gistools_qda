@@ -1,4 +1,4 @@
-# Building Maps in R Studio
+# Building Static Maps in R Studio
 
 ## Load your libraries and set your working directory
 
@@ -120,20 +120,82 @@ Now, let's shift the legend, remove the legend title, and add a title for the ma
 
 ```{r, fig.asp=0.5}
 usa_trifecta_map<-usa_trifecta_map<-tm_shape(usa_shapefile_trifecta)+
-                    tm_polygons(col="Composition", 
-                                palette=colors,
-                                title="")+
-                    tm_layout(legend.position = c("left", "center"),
-                              frame=FALSE,
-                              main.title="Partisan Composition of State Governments, 2022",
-                              main.title.size=1,
-                              main.title.position="center")
+                                      tm_polygons(col="Composition", 
+                                                  palette=colors,
+                                                  title="")+
+                                    tm_layout(legend.position = c("left", "center"),
+                                              frame=FALSE,
+                                              main.title="Partisan Composition of State Governments, 2022",
+                                              main.title.size=1,
+                                              main.title.position="center")
                     
 
 usa_trifecta_map
 ```
 
 
+# Building Web Maps in R Studio
+
+
+```{r}
+tmap_mode("view")
+```
+
+```{r}
+usa_trifecta_map
+```
+
+
+```{r}
+tmap_mode("plot")
+```
+
+```{r}
+usa_trifecta_map
+```
+
+Make a webmap that shifts Alaska and Hawaii back to their actual locations:
+
+```{r, echo=-1}
+setwd("/Users/adra7980/Documents/git_repositories/gistools_qda/data")
+usa_unshifted<-st_read("usa_unshifted.shp")
+```
+
+```{r}
+usa_unshifted
+```
+
+
+```{r}
+# join tabular data to "usa_unshifted"
+usa_unshifted_trifecta<-inner_join(usa_unshifted, usa_trifecta_data, by="abbrev")
+
+# sets factor
+usa_unshifted_trifecta<-usa_unshifted_trifecta %>% 
+                          mutate(Composition=factor(Composition, levels=c("Democratic Trifecta", 
+                                                  "Republican Trifecta", "Divided Government"))) %>% 
+                          rename(State=NAME.x) %>% 
+                          relocate(State, Composition)
+
+
+
+# recreate map
+usa_trifecta_map_unshifed<-tm_shape(usa_unshifted_trifecta)+
+                                tm_polygons(col="Composition", 
+                                            palette=colors,
+                                            title="")+
+                                tm_layout(frame=FALSE,
+                                          main.title="Partisan Composition of State Governments, 2022",
+                                          main.title.size=1,
+                                          main.title.position="center")
+
+# change to view mode
+tmap_mode("view")
+
+usa_trifecta_map_unshifed
+```
+
+# Exporting Maps from R Studio
 
 
 

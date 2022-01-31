@@ -1,5 +1,5 @@
 introduction
-building-maps-in-r-studio
+building-static-maps-in-r-studio
 load-your-libraries-and-set-your-working-directory
 read-in-a-spatial-dataset
 view-the-spatial-datasets-attribute-table
@@ -8,4 +8,6 @@ read-in-a-tabular-dataset-with-the-information-to-map
 load-tabular-data
 merge-data
 map-the-trifecta-data
+building-web-maps-in-r-studio
+exporting-maps-from-r-studio
 building-maps-in-quantum-geographic-information-systems-qgis
