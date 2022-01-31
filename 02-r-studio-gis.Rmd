@@ -1,2 +1,33 @@
 # Building Maps in R Studio
 
+## Load your libraries and set your working directory
+
+```{r}
+# Load libraries
+library(tmap)
+library(sf)
+library(tidyverse)
+```
+
+If you don't already have the packages installed, you must install them before loading the libraries; you can install the libraries with the following:
+
+```{r, eval=FALSE}
+install.packages(c("tmap", "sf", "tidyverse"))
+```
+
+After your libraries are successfully installed and loaded, set your working directory by passing the file path of the directory that contains your data to the ```setwd``` function, as in the example below (but note your file path will look different). 
+
+```{r, eval=F}
+# Set your working directory to the directory containing your data
+setwd("/Users/adra7980/Documents/git_repositories/opensource_mapping/data")
+```
+
+If you don't know the relevant file path, you can set your working directory manually by opening the ```Session``` menu, scrolling down to 
+
+## Read in a spatial dataset
+```{r, echo=-1}
+setwd("/Users/adra7980/Documents/git_repositories/opensource_mapping/data")
+# Read in the shapefile named "usa_shapefile.shp"
+usa_shapefile<-st_read("usa_shapefile.shp")
+```
+

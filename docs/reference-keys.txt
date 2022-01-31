@@ -1,3 +1,5 @@
 introduction
 building-maps-in-r-studio
+load-your-libraries-and-set-your-working-directory
+read-in-a-spatial-dataset
 building-maps-in-quantum-geographic-information-systems-qgis
