@@ -87,6 +87,62 @@ usa_shapefile_trifecta<-right_join(usa_shapefile, usa_trifecta, by="abbrev" )
 usa_shapefile_trifecta
 ```
 
+## Map the trifecta data
+
+Start with a rough map:
+
+```{r, fig.asp=0.5}
+usa_trifecta_map<-tm_shape(usa_shapefile_trifecta)+
+                    tm_polygons(col="Composition")
+
+usa_trifecta_map
+```
+
+Adjust the color scheme, such that it is red for a Republican trifecta, dark blue for a democratic trifecta, and 
+
+```{r}
+# Sets composition variable as factor
+usa_shapefile_trifecta<-usa_shapefile_trifecta %>% 
+                          mutate(Composition=factor(Composition, levels=c("Democratic Trifecta", "Republican Trifecta", "Divided Government")))
+```
+
+```{r, fig.asp=0.5}
+# Maps data with custom colors; note the changed order in the legend
+colors<-c("navy", "red3", "seashell")
+usa_trifecta_map<-tm_shape(usa_shapefile_trifecta)+
+                    tm_polygons(col="Composition", 
+                                palette=colors)
+
+usa_trifecta_map
+```
+
+Now, let's shift the legend, remove the legend title, and add a title for the map:
+
+```{r, fig.asp=0.5}
+usa_trifecta_map<-usa_trifecta_map<-tm_shape(usa_shapefile_trifecta)+
+                    tm_polygons(col="Composition", 
+                                palette=colors,
+                                title="")+
+                    tm_layout(legend.position = c("left", "center"),
+                              frame=FALSE,
+                              main.title="Partisan Composition of State Governments, 2022",
+                              main.title.size=1,
+                              main.title.position="center")
+                    
+
+usa_trifecta_map
+```
+
+
+
+
+
+
+
+
+https://stackoverflow.com/questions/68569749/how-to-change-the-order-of-legend-elements-in-tmap
+
+
 
 
 

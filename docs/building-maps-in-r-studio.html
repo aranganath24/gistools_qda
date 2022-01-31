@@ -146,6 +146,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.5" data-path="building-maps-in-r-studio.html"><a href="building-maps-in-r-studio.html#read-in-a-tabular-dataset-with-the-information-to-map"><i class="fa fa-check"></i><b>2.5</b> Read in a tabular dataset with the information to map</a></li>
 <li class="chapter" data-level="2.6" data-path="building-maps-in-r-studio.html"><a href="building-maps-in-r-studio.html#load-tabular-data"><i class="fa fa-check"></i><b>2.6</b> Load Tabular data</a></li>
 <li class="chapter" data-level="2.7" data-path="building-maps-in-r-studio.html"><a href="building-maps-in-r-studio.html#merge-data"><i class="fa fa-check"></i><b>2.7</b> Merge data</a></li>
+<li class="chapter" data-level="2.8" data-path="building-maps-in-r-studio.html"><a href="building-maps-in-r-studio.html#map-the-trifecta-data"><i class="fa fa-check"></i><b>2.8</b> Map the trifecta data</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="building-maps-in-quantum-geographic-information-systems-qgis.html"><a href="building-maps-in-quantum-geographic-information-systems-qgis.html"><i class="fa fa-check"></i><b>3</b> Building Maps in Quantum Geographic Information Systems (QGIS)</a></li>
 <li class="divider"></li>
@@ -218,11 +219,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">2.4</span> Map the spatial dataset</h2>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="building-maps-in-r-studio.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(usa_shapefile)<span class="sc">+</span></span>
 <span id="cb8-2"><a href="building-maps-in-r-studio.html#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_polygons</span>()</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="building-maps-in-r-studio.html#cb9-1" aria-hidden="true" tabindex="-1"></a>usa_map<span class="ot">&lt;-</span><span class="fu">tm_shape</span>(usa_shapefile)<span class="sc">+</span></span>
 <span id="cb9-2"><a href="building-maps-in-r-studio.html#cb9-2" aria-hidden="true" tabindex="-1"></a>            <span class="fu">tm_polygons</span>()</span></code></pre></div>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="building-maps-in-r-studio.html#cb10-1" aria-hidden="true" tabindex="-1"></a>usa_map</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
 </div>
 <div id="read-in-a-tabular-dataset-with-the-information-to-map" class="section level2" number="2.5">
 <h2><span class="header-section-number">2.5</span> Read in a tabular dataset with the information to map</h2>
@@ -299,6 +300,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 8       37 North Carolina     NC      37 North Carolina  Divided Government MULTIPOLYGON (((1192302 -79...
 ## 9       39           Ohio     OH      39           Ohio Republican Trifecta MULTIPOLYGON (((1085606 548...
 ## 10      42   Pennsylvania     PA      42   Pennsylvania  Divided Government MULTIPOLYGON (((1733137 446...</code></pre>
+</div>
+<div id="map-the-trifecta-data" class="section level2" number="2.8">
+<h2><span class="header-section-number">2.8</span> Map the trifecta data</h2>
+<p>Start with a rough map:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="building-maps-in-r-studio.html#cb22-1" aria-hidden="true" tabindex="-1"></a>usa_trifecta_map<span class="ot">&lt;-</span><span class="fu">tm_shape</span>(usa_shapefile_trifecta)<span class="sc">+</span></span>
+<span id="cb22-2"><a href="building-maps-in-r-studio.html#cb22-2" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">tm_polygons</span>(<span class="at">col=</span><span class="st">&quot;Composition&quot;</span>)</span>
+<span id="cb22-3"><a href="building-maps-in-r-studio.html#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="building-maps-in-r-studio.html#cb22-4" aria-hidden="true" tabindex="-1"></a>usa_trifecta_map</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
+<p>Adjust the color scheme, such that it is red for a Republican trifecta, dark blue for a democratic trifecta, and</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="building-maps-in-r-studio.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sets composition variable as factor</span></span>
+<span id="cb23-2"><a href="building-maps-in-r-studio.html#cb23-2" aria-hidden="true" tabindex="-1"></a>usa_shapefile_trifecta<span class="ot">&lt;-</span>usa_shapefile_trifecta <span class="sc">%&gt;%</span> </span>
+<span id="cb23-3"><a href="building-maps-in-r-studio.html#cb23-3" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">mutate</span>(<span class="at">Composition=</span><span class="fu">factor</span>(Composition, <span class="at">levels=</span><span class="fu">c</span>(<span class="st">&quot;Democratic Trifecta&quot;</span>, <span class="st">&quot;Republican Trifecta&quot;</span>, <span class="st">&quot;Divided Government&quot;</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="building-maps-in-r-studio.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Maps data with custom colors; note the changed order in the legend</span></span>
+<span id="cb24-2"><a href="building-maps-in-r-studio.html#cb24-2" aria-hidden="true" tabindex="-1"></a>colors<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;navy&quot;</span>, <span class="st">&quot;red3&quot;</span>, <span class="st">&quot;seashell&quot;</span>)</span>
+<span id="cb24-3"><a href="building-maps-in-r-studio.html#cb24-3" aria-hidden="true" tabindex="-1"></a>usa_trifecta_map<span class="ot">&lt;-</span><span class="fu">tm_shape</span>(usa_shapefile_trifecta)<span class="sc">+</span></span>
+<span id="cb24-4"><a href="building-maps-in-r-studio.html#cb24-4" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">tm_polygons</span>(<span class="at">col=</span><span class="st">&quot;Composition&quot;</span>, </span>
+<span id="cb24-5"><a href="building-maps-in-r-studio.html#cb24-5" aria-hidden="true" tabindex="-1"></a>                                <span class="at">palette=</span>colors)</span>
+<span id="cb24-6"><a href="building-maps-in-r-studio.html#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-7"><a href="building-maps-in-r-studio.html#cb24-7" aria-hidden="true" tabindex="-1"></a>usa_trifecta_map</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
+<p>Now, let’s shift the legend, remove the legend title, and add a title for the map:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="building-maps-in-r-studio.html#cb25-1" aria-hidden="true" tabindex="-1"></a>usa_trifecta_map<span class="ot">&lt;-</span>usa_trifecta_map<span class="ot">&lt;-</span><span class="fu">tm_shape</span>(usa_shapefile_trifecta)<span class="sc">+</span></span>
+<span id="cb25-2"><a href="building-maps-in-r-studio.html#cb25-2" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">tm_polygons</span>(<span class="at">col=</span><span class="st">&quot;Composition&quot;</span>, </span>
+<span id="cb25-3"><a href="building-maps-in-r-studio.html#cb25-3" aria-hidden="true" tabindex="-1"></a>                                <span class="at">palette=</span>colors,</span>
+<span id="cb25-4"><a href="building-maps-in-r-studio.html#cb25-4" aria-hidden="true" tabindex="-1"></a>                                <span class="at">title=</span><span class="st">&quot;&quot;</span>)<span class="sc">+</span></span>
+<span id="cb25-5"><a href="building-maps-in-r-studio.html#cb25-5" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">tm_layout</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="st">&quot;left&quot;</span>, <span class="st">&quot;center&quot;</span>),</span>
+<span id="cb25-6"><a href="building-maps-in-r-studio.html#cb25-6" aria-hidden="true" tabindex="-1"></a>                              <span class="at">frame=</span><span class="cn">FALSE</span>,</span>
+<span id="cb25-7"><a href="building-maps-in-r-studio.html#cb25-7" aria-hidden="true" tabindex="-1"></a>                              <span class="at">main.title=</span><span class="st">&quot;Partisan Composition of State Governments, 2022&quot;</span>,</span>
+<span id="cb25-8"><a href="building-maps-in-r-studio.html#cb25-8" aria-hidden="true" tabindex="-1"></a>                              <span class="at">main.title.size=</span><span class="dv">1</span>,</span>
+<span id="cb25-9"><a href="building-maps-in-r-studio.html#cb25-9" aria-hidden="true" tabindex="-1"></a>                              <span class="at">main.title.position=</span><span class="st">&quot;center&quot;</span>)</span>
+<span id="cb25-10"><a href="building-maps-in-r-studio.html#cb25-10" aria-hidden="true" tabindex="-1"></a>                    </span>
+<span id="cb25-11"><a href="building-maps-in-r-studio.html#cb25-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-12"><a href="building-maps-in-r-studio.html#cb25-12" aria-hidden="true" tabindex="-1"></a>usa_trifecta_map</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-36-1.png" width="672" /></p>
+<p><a href="https://stackoverflow.com/questions/68569749/how-to-change-the-order-of-legend-elements-in-tmap" class="uri">https://stackoverflow.com/questions/68569749/how-to-change-the-order-of-legend-elements-in-tmap</a></p>
 
 </div>
 </div>

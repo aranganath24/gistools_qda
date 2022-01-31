@@ -7,4 +7,5 @@ map-the-spatial-dataset
 read-in-a-tabular-dataset-with-the-information-to-map
 load-tabular-data
 merge-data
+map-the-trifecta-data
 building-maps-in-quantum-geographic-information-systems-qgis
