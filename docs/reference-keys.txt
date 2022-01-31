@@ -1,3 +1,6 @@
+fig:unnamed-chunk-27
+fig:unnamed-chunk-28
+fig:unnamed-chunk-29
 introduction
 building-static-maps-in-r-studio
 load-your-libraries-and-set-your-working-directory

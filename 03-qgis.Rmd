@@ -1,3 +1,16 @@
 # (PART) Maps in QGIS {-}
 
 # Building Maps in Quantum Geographic Information Systems (QGIS)
+
+```{r, echo=F, fig.cap="The main QGIS window"}
+knitr::include_graphics("screenshots/qgis_window.png")
+```
+
+```{r, echo=F, fig.cap="Navigating to the 'Add Vector Layer' Menu"}
+knitr::include_graphics("screenshots/add_vector_layer.png")
+```
+
+```{r, echo=F, fig.cap="Click the 'Browse' button to navigate to your shapefile"}
+knitr::include_graphics("screenshots/browse.png")
+```
+
