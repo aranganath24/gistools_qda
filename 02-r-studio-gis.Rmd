@@ -19,15 +19,90 @@ After your libraries are successfully installed and loaded, set your working dir
 
 ```{r, eval=F}
 # Set your working directory to the directory containing your data
-setwd("/Users/adra7980/Documents/git_repositories/opensource_mapping/data")
+setwd("/Users/adra7980/Documents/git_repositories/gistools_qda/data")
 ```
 
 If you don't know the relevant file path, you can set your working directory manually by opening the ```Session``` menu, scrolling down to 
 
 ## Read in a spatial dataset
+
 ```{r, echo=-1}
-setwd("/Users/adra7980/Documents/git_repositories/opensource_mapping/data")
+setwd("/Users/adra7980/Documents/git_repositories/gistools_qda/data")
 # Read in the shapefile named "usa_shapefile.shp"
 usa_shapefile<-st_read("usa_shapefile.shp")
 ```
+
+## View the spatial dataset's attribute table
+
+```{r}
+usa_shapefile
+```
+
+## Map the spatial dataset 
+
+```{r, fig.asp=0.5}
+tm_shape(usa_shapefile)+
+  tm_polygons()
+```
+
+```{r}
+usa_map<-tm_shape(usa_shapefile)+
+            tm_polygons()
+```
+
+
+```{r, fig.asp=0.5}
+usa_map
+```
+
+## Read in a tabular dataset with the information to map
+
+```{r, echo=-1}
+setwd("/Users/adra7980/Documents/git_repositories/gistools_qda/data")
+usa_trifecta_data<-read_csv("usa_trifecta.csv")
+```
+
+```{r}
+usa_trifecta_data
+```
+
+## Load Tabular data
+
+```{r, echo=-1}
+setwd("/Users/adra7980/Documents/git_repositories/gistools_qda/data")
+usa_trifecta<-read_csv("usa_trifecta.csv")
+```
+
+```{r}
+usa_trifecta
+```
+
+## Merge data
+
+```{r}
+usa_shapefile_trifecta<-right_join(usa_shapefile, usa_trifecta, by="abbrev" )
+```
+
+```{r}
+usa_shapefile_trifecta
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

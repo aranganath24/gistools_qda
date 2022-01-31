@@ -2,4 +2,9 @@ introduction
 building-maps-in-r-studio
 load-your-libraries-and-set-your-working-directory
 read-in-a-spatial-dataset
+view-the-spatial-datasets-attribute-table
+map-the-spatial-dataset
+read-in-a-tabular-dataset-with-the-information-to-map
+load-tabular-data
+merge-data
 building-maps-in-quantum-geographic-information-systems-qgis

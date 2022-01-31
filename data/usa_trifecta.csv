@@ -7,7 +7,6 @@ GEOID,NAME,abbrev,Composition
 8,Colorado,CO,Democratic Trifecta
 9,Connecticut,CT,Democratic Trifecta
 10,Delaware,DE,Democratic Trifecta
-11,District of Columbia,DC,
 12,Florida,FL,Republican Trifecta
 13,Georgia,GA,Republican Trifecta
 15,Hawaii,HI,Democratic Trifecta
@@ -38,7 +37,6 @@ GEOID,NAME,abbrev,Composition
 40,Oklahoma,OK,Republican Trifecta
 41,Oregon,OR,Democratic Trifecta
 42,Pennsylvania,PA,Divided Government
-72,Puerto Rico,NA,
 44,Rhode Island,RI,Democratic Trifecta
 45,South Carolina,SC,Republican Trifecta
 46,South Dakota,SD,Republican Trifecta

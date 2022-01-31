@@ -141,6 +141,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.1" data-path="building-maps-in-r-studio.html"><a href="building-maps-in-r-studio.html#load-your-libraries-and-set-your-working-directory"><i class="fa fa-check"></i><b>2.1</b> Load your libraries and set your working directory</a></li>
 <li class="chapter" data-level="2.2" data-path="building-maps-in-r-studio.html"><a href="building-maps-in-r-studio.html#read-in-a-spatial-dataset"><i class="fa fa-check"></i><b>2.2</b> Read in a spatial dataset</a></li>
+<li class="chapter" data-level="2.3" data-path="building-maps-in-r-studio.html"><a href="building-maps-in-r-studio.html#view-the-spatial-datasets-attribute-table"><i class="fa fa-check"></i><b>2.3</b> View the spatial dataset’s attribute table</a></li>
+<li class="chapter" data-level="2.4" data-path="building-maps-in-r-studio.html"><a href="building-maps-in-r-studio.html#map-the-spatial-dataset"><i class="fa fa-check"></i><b>2.4</b> Map the spatial dataset</a></li>
+<li class="chapter" data-level="2.5" data-path="building-maps-in-r-studio.html"><a href="building-maps-in-r-studio.html#read-in-a-tabular-dataset-with-the-information-to-map"><i class="fa fa-check"></i><b>2.5</b> Read in a tabular dataset with the information to map</a></li>
+<li class="chapter" data-level="2.6" data-path="building-maps-in-r-studio.html"><a href="building-maps-in-r-studio.html#load-tabular-data"><i class="fa fa-check"></i><b>2.6</b> Load Tabular data</a></li>
+<li class="chapter" data-level="2.7" data-path="building-maps-in-r-studio.html"><a href="building-maps-in-r-studio.html#merge-data"><i class="fa fa-check"></i><b>2.7</b> Merge data</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="building-maps-in-quantum-geographic-information-systems-qgis.html"><a href="building-maps-in-quantum-geographic-information-systems-qgis.html"><i class="fa fa-check"></i><b>3</b> Building Maps in Quantum Geographic Information Systems (QGIS)</a></li>
 <li class="divider"></li>
@@ -174,19 +179,126 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="building-maps-in-r-studio.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">&quot;tmap&quot;</span>, <span class="st">&quot;sf&quot;</span>, <span class="st">&quot;tidyverse&quot;</span>))</span></code></pre></div>
 <p>After your libraries are successfully installed and loaded, set your working directory by passing the file path of the directory that contains your data to the <code>setwd</code> function, as in the example below (but note your file path will look different).</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="building-maps-in-r-studio.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory to the directory containing your data</span></span>
-<span id="cb3-2"><a href="building-maps-in-r-studio.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;/Users/adra7980/Documents/git_repositories/opensource_mapping/data&quot;</span>)</span></code></pre></div>
+<span id="cb3-2"><a href="building-maps-in-r-studio.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;/Users/adra7980/Documents/git_repositories/gistools_qda/data&quot;</span>)</span></code></pre></div>
 <p>If you don’t know the relevant file path, you can set your working directory manually by opening the <code>Session</code> menu, scrolling down to</p>
 </div>
 <div id="read-in-a-spatial-dataset" class="section level2" number="2.2">
 <h2><span class="header-section-number">2.2</span> Read in a spatial dataset</h2>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="building-maps-in-r-studio.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in the shapefile named &quot;usa_shapefile.shp&quot;</span></span>
 <span id="cb4-2"><a href="building-maps-in-r-studio.html#cb4-2" aria-hidden="true" tabindex="-1"></a>usa_shapefile<span class="ot">&lt;-</span><span class="fu">st_read</span>(<span class="st">&quot;usa_shapefile.shp&quot;</span>)</span></code></pre></div>
-<pre><code>## Reading layer `usa_shapefile&#39; from data source `/Users/adra7980/Documents/git_repositories/opensource_mapping/data/usa_shapefile.shp&#39; using driver `ESRI Shapefile&#39;
+<pre><code>## Reading layer `usa_shapefile&#39; from data source `/Users/adra7980/Documents/git_repositories/gistools_qda/data/usa_shapefile.shp&#39; using driver `ESRI Shapefile&#39;
 ## Simple feature collection with 52 features and 3 fields
 ## geometry type:  MULTIPOLYGON
 ## dimension:      XY
 ## bbox:           xmin: -4088650 ymin: -1696697 xmax: 2258200 ymax: 1565782
 ## projected CRS:  USA_Contiguous_Albers_Equal_Area_Conic</code></pre>
+</div>
+<div id="view-the-spatial-datasets-attribute-table" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> View the spatial dataset’s attribute table</h2>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="building-maps-in-r-studio.html#cb6-1" aria-hidden="true" tabindex="-1"></a>usa_shapefile</span></code></pre></div>
+<pre><code>## Simple feature collection with 52 features and 3 fields
+## geometry type:  MULTIPOLYGON
+## dimension:      XY
+## bbox:           xmin: -4088650 ymin: -1696697 xmax: 2258200 ymax: 1565782
+## projected CRS:  USA_Contiguous_Albers_Equal_Area_Conic
+## First 10 features:
+##    GEOID           name abbrev                       geometry
+## 1     23          Maine     ME MULTIPOLYGON (((2217413 111...
+## 2     25  Massachusetts     MA MULTIPOLYGON (((2057879 734...
+## 3     26       Michigan     MI MULTIPOLYGON (((548934.7 12...
+## 4     30        Montana     MT MULTIPOLYGON (((-633753 865...
+## 5     32         Nevada     NV MULTIPOLYGON (((-1581791 94...
+## 6     34     New Jersey     NJ MULTIPOLYGON (((1727369 428...
+## 7     36       New York     NY MULTIPOLYGON (((1977956 675...
+## 8     37 North Carolina     NC MULTIPOLYGON (((1192302 -79...
+## 9     39           Ohio     OH MULTIPOLYGON (((1085606 548...
+## 10    42   Pennsylvania     PA MULTIPOLYGON (((1733137 446...</code></pre>
+</div>
+<div id="map-the-spatial-dataset" class="section level2" number="2.4">
+<h2><span class="header-section-number">2.4</span> Map the spatial dataset</h2>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="building-maps-in-r-studio.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(usa_shapefile)<span class="sc">+</span></span>
+<span id="cb8-2"><a href="building-maps-in-r-studio.html#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_polygons</span>()</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="building-maps-in-r-studio.html#cb9-1" aria-hidden="true" tabindex="-1"></a>usa_map<span class="ot">&lt;-</span><span class="fu">tm_shape</span>(usa_shapefile)<span class="sc">+</span></span>
+<span id="cb9-2"><a href="building-maps-in-r-studio.html#cb9-2" aria-hidden="true" tabindex="-1"></a>            <span class="fu">tm_polygons</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="building-maps-in-r-studio.html#cb10-1" aria-hidden="true" tabindex="-1"></a>usa_map</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+</div>
+<div id="read-in-a-tabular-dataset-with-the-information-to-map" class="section level2" number="2.5">
+<h2><span class="header-section-number">2.5</span> Read in a tabular dataset with the information to map</h2>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="building-maps-in-r-studio.html#cb11-1" aria-hidden="true" tabindex="-1"></a>usa_trifecta_data<span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="st">&quot;usa_trifecta.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+## ── Column specification ─────────────────────────────────────────────────────────────────────────────────────────
+## cols(
+##   GEOID = col_double(),
+##   NAME = col_character(),
+##   abbrev = col_character(),
+##   Composition = col_character()
+## )</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="building-maps-in-r-studio.html#cb13-1" aria-hidden="true" tabindex="-1"></a>usa_trifecta_data</span></code></pre></div>
+<pre><code>## # A tibble: 50 x 4
+##    GEOID NAME        abbrev Composition        
+##    &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;  &lt;chr&gt;              
+##  1     1 Alabama     AL     Republican Trifecta
+##  2     2 Alaska      AK     Divided Government 
+##  3     4 Arizona     AZ     Republican Trifecta
+##  4     5 Arkansas    AR     Republican Trifecta
+##  5     6 California  CA     Democratic Trifecta
+##  6     8 Colorado    CO     Democratic Trifecta
+##  7     9 Connecticut CT     Democratic Trifecta
+##  8    10 Delaware    DE     Democratic Trifecta
+##  9    12 Florida     FL     Republican Trifecta
+## 10    13 Georgia     GA     Republican Trifecta
+## # … with 40 more rows</code></pre>
+</div>
+<div id="load-tabular-data" class="section level2" number="2.6">
+<h2><span class="header-section-number">2.6</span> Load Tabular data</h2>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="building-maps-in-r-studio.html#cb15-1" aria-hidden="true" tabindex="-1"></a>usa_trifecta<span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="st">&quot;usa_trifecta.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+## ── Column specification ─────────────────────────────────────────────────────────────────────────────────────────
+## cols(
+##   GEOID = col_double(),
+##   NAME = col_character(),
+##   abbrev = col_character(),
+##   Composition = col_character()
+## )</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="building-maps-in-r-studio.html#cb17-1" aria-hidden="true" tabindex="-1"></a>usa_trifecta</span></code></pre></div>
+<pre><code>## # A tibble: 50 x 4
+##    GEOID NAME        abbrev Composition        
+##    &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;  &lt;chr&gt;              
+##  1     1 Alabama     AL     Republican Trifecta
+##  2     2 Alaska      AK     Divided Government 
+##  3     4 Arizona     AZ     Republican Trifecta
+##  4     5 Arkansas    AR     Republican Trifecta
+##  5     6 California  CA     Democratic Trifecta
+##  6     8 Colorado    CO     Democratic Trifecta
+##  7     9 Connecticut CT     Democratic Trifecta
+##  8    10 Delaware    DE     Democratic Trifecta
+##  9    12 Florida     FL     Republican Trifecta
+## 10    13 Georgia     GA     Republican Trifecta
+## # … with 40 more rows</code></pre>
+</div>
+<div id="merge-data" class="section level2" number="2.7">
+<h2><span class="header-section-number">2.7</span> Merge data</h2>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="building-maps-in-r-studio.html#cb19-1" aria-hidden="true" tabindex="-1"></a>usa_shapefile_trifecta<span class="ot">&lt;-</span><span class="fu">right_join</span>(usa_shapefile, usa_trifecta, <span class="at">by=</span><span class="st">&quot;abbrev&quot;</span> )</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="building-maps-in-r-studio.html#cb20-1" aria-hidden="true" tabindex="-1"></a>usa_shapefile_trifecta</span></code></pre></div>
+<pre><code>## Simple feature collection with 50 features and 6 fields
+## geometry type:  MULTIPOLYGON
+## dimension:      XY
+## bbox:           xmin: -4088650 ymin: -1696697 xmax: 2258200 ymax: 1565782
+## projected CRS:  USA_Contiguous_Albers_Equal_Area_Conic
+## First 10 features:
+##    GEOID.x           name abbrev GEOID.y           NAME         Composition                       geometry
+## 1       23          Maine     ME      23          Maine Democratic Trifecta MULTIPOLYGON (((2217413 111...
+## 2       25  Massachusetts     MA      25  Massachusetts  Divided Government MULTIPOLYGON (((2057879 734...
+## 3       26       Michigan     MI      26       Michigan  Divided Government MULTIPOLYGON (((548934.7 12...
+## 4       30        Montana     MT      30        Montana Republican Trifecta MULTIPOLYGON (((-633753 865...
+## 5       32         Nevada     NV      32         Nevada Democratic Trifecta MULTIPOLYGON (((-1581791 94...
+## 6       34     New Jersey     NJ      34     New Jersey Democratic Trifecta MULTIPOLYGON (((1727369 428...
+## 7       36       New York     NY      36       New York Democratic Trifecta MULTIPOLYGON (((1977956 675...
+## 8       37 North Carolina     NC      37 North Carolina  Divided Government MULTIPOLYGON (((1192302 -79...
+## 9       39           Ohio     OH      39           Ohio Republican Trifecta MULTIPOLYGON (((1085606 548...
+## 10      42   Pennsylvania     PA      42   Pennsylvania  Divided Government MULTIPOLYGON (((1733137 446...</code></pre>
 
 </div>
 </div>
@@ -227,7 +339,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/aranganath24/opensource_mapping/edit/master/02-r-studio-gis.Rmd",
+"link": "https://github.com/aranganath24/gistools_qda/edit/master/02-r-studio-gis.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -235,7 +347,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/aranganath24/opensource_mapping/blob/master/02-r-studio-gis.Rmd",
+"link": "https://github.com/aranganath24/gistools_qda/blob/master/02-r-studio-gis.Rmd",
 "text": null
 },
 "download": null,
