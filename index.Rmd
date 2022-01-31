@@ -1,9 +1,8 @@
 --- 
-title: "YOUR TITLE HERE"
-author: "YOUR NAME HERE"
+title: "An Introduction to Open Source Mapping Tools"
+author: "Aditya Ranganath"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 ---
-
-# Down the rabbit-hole
+# Introduction
 
