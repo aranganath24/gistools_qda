@@ -1,3 +1,5 @@
+# (PART) Maps in R Studio {-}
+
 # Building Static Maps in R Studio
 
 ## Load your libraries and set your working directory
@@ -198,11 +200,6 @@ usa_trifecta_map_unshifed
 # Exporting Maps from R Studio
 
 
-
-
-
-
-https://stackoverflow.com/questions/68569749/how-to-change-the-order-of-legend-elements-in-tmap
 
 
 

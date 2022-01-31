@@ -1,1 +1,3 @@
+# (PART) Maps in QGIS {-}
+
 # Building Maps in Quantum Geographic Information Systems (QGIS)
