@@ -196,7 +196,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>First, let’s export our print map to our working directory, using the <code>tmap_save</code> function. The first argument is the name of the object to be exported, while the second argument is the desired name and extension of the exported file containing the map. For example, if we wanted to export the map as a png file, we would use the following:</p>
 <div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="exporting-maps-from-r-studio.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Writes print map (&quot;usa_trifecta_map&quot;) to working directory as png file</span></span>
 <span id="cb51-2"><a href="exporting-maps-from-r-studio.html#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tmap_save</span>(usa_trifecta_map, <span class="st">&quot;usa_trifecta_map_export.png&quot;</span>)</span></code></pre></div>
-<pre><code>## Map saved to usa_trifecta_map_export.png</code></pre>
+<pre><code>## Map saved to /Users/adra7980/Documents/git_repositories/gistools_qda/usa_trifecta_map_export.png</code></pre>
 <pre><code>## Resolution: 2929.035 by 1505.615 pixels</code></pre>
 <pre><code>## Size: 9.76345 by 5.018718 inches (300 dpi)</code></pre>
 <p>If you want to export a webmap, use the same functions and arguments, but make sure to use an html extension for the output files; an interactive map will be saved to your working directory, which you can then embed on a website.</p>

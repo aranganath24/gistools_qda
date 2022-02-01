@@ -179,17 +179,8 @@ usa_trifecta_map
 Now, let's add a credits section, to indicate the map's author and give credit to the source of the data. We can do so with the ```tm_credits``` function: 
 
 ```{r}
-usa_trifecta_map<-tm_shape(usa_shapefile_trifecta)+
-                      tm_polygons(col="Composition", 
-                                  palette=colors,
-                                  title="")+
-                      tm_layout(legend.position = c("left", "center"),
-                                frame=FALSE,
-                                main.title="Partisan Composition of State Governments, 2022",
-                                main.title.size=1,
-                                main.title.position="center")+
-                       tm_credits("Map Author: Aditya Ranganath\nSource: Ballotpedia", size=0.5) # sets map credits and size
-                    
+usa_trifecta_map<-usa_trifecta_map+
+                  tm_credits("Map Author: Aditya Ranganath\nSource: Ballotpedia", size=0.5) # sets map credits and size
 
 usa_trifecta_map
 ```
