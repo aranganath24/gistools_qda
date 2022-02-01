@@ -33,38 +33,62 @@ At this point, you will see the file path to the shapefile under the ```Source``
 knitr::include_graphics("screenshots/add_shapefile.png")
 ```
 
+Once the shapefile has been added, it will appear in the QGIS project window. Note that the color of the shapefile when it is first imported is arbitrarily set by QGIS, but this initial color can always be changed. 
 
 ```{r, echo=F, fig.cap="The rendered shapefile/spatial dataset rendered in the QGIS project window" }
 knitr::include_graphics("screenshots/rendered_shapefile.png")
 ```
 
+## Inspect the shapefile's attribute table
+
+To inspect the attribute table that is associated with the shapefile, right-click on the shapefile in the ```Layers``` window, and select ```Open Attribute Table```.
+
 ```{r, echo=F, fig.cap="Open the the shapefile's attribute table" }
 knitr::include_graphics("screenshots/open_attribute_table.png")
 ```
+
+When the attribute table is open, it will look something like this. When you select a record in the attribute table (by clicking on it), the corresponding geographic attribute will automatically be selected on the map (and vice versa). Here, we clicked on the ```Colorado``` record within the attribute table, which simultaneously highlighted Colorado on the shapefile's geographic representation in the project window: 
 
 ```{r, echo=F, fig.cap="Select a record within the opened attribute table" }
 knitr::include_graphics("screenshots/attribute_table_selection.png")
 ```
 
-```{r, echo=F, fig.cap="Deselect a selected record" }
+If you want to deselect a selected record, click the ```Deselect all features from the layer``` button in the menu bar on top of the attribute table: 
+
+```{r, echo=F, fig.cap="Deselect a selected record"}
 knitr::include_graphics("screenshots/deselect_layer.png")
 ```
+
+## Add tabular CSV data to QGIS
+
+Having adding the shapefile to QGIS, let's import the tabular dataset (stored as a CSV file) that contains information on partisan control over state governments, which is the data that we want to ultimately visualize on a map. 
+
+To add the CSV file, click the ```Layer``` menu from the QGIS menu bar, and then select ```Add Layer``` followed by ```Add Delimited Text Layer```: 
 
 ```{r, echo=F, fig.cap="Navigate to menu that facilitates the importing of tabular data" }
 knitr::include_graphics("screenshots/delimited_text.png")
 ```
 
+Click on the ellipsis next to the ```File name``` bar, and then navigate to the CSV file on your computer and add it; at this point, the file path to the CSV will appear next to the ```File name``` bar. Under the ```File Format``` section, make sure that the ```CSV (comma separated values)``` button is selected. Finally, under the ```Geometry Definition``` section, select the ```No geometry (attribute table only)``` button. Once these selections are made, go ahead and click the ```Add``` button on the bottom of the dialog box. 
+
 ```{r, echo=F, fig.cap="Set paremeters before adding the CSV file" }
 knitr::include_graphics("screenshots/delimited_text_import.png")
 ```
+
+At this point, you'll notice the CSV file (named ```usa_trifecta_data```) added to the ```Layers``` section on the bottom-left of the QGIS interface (right above the shapefile). To inspect the CSV file, right-click on the file in the ```Layers``` menu, and select ```Open Attribute Table```,  
 
 ```{r, echo=F, fig.cap="Open the CSV file within QGIS" }
 knitr::include_graphics("screenshots/open_tabular_data.png")
 ```
 
+The tabular dataset/CSV file, when opened up in QGIS, will look something like this:
+
 ```{r, echo=F, fig.cap="The tabular dataset open within QGIS" }
 knitr::include_graphics("screenshots/inspect_table.png")
 ```
+
+## Join the tabular data (```usa_trifecta_data```) to the shapefile (```usa_shapefile```)
+
 
 ```{r, echo=F, fig.cap="Open the 'properties' dialog box" }
 knitr::include_graphics("screenshots/25.png")
@@ -86,6 +110,7 @@ knitr::include_graphics("screenshots/31.png")
 knitr::include_graphics("screenshots/35.png")
 ```
 
+## Display the state government categorical data on the shapefile 
 
 ```{r, echo=F, fig.cap="Opening the `Symbology` tab from the `Properties` dialog box" }
 knitr::include_graphics("screenshots/symbology1.png")
@@ -116,6 +141,8 @@ knitr::include_graphics("screenshots/colors2.png")
 ```{r, echo=F, fig.cap="Map with changes applied" }
 knitr::include_graphics("screenshots/modified_map.png")
 ```
+
+## Make a print map using the ```Print Layout``` interface
 
 ```{r, echo=F, fig.cap="Open Print Layout" }
 knitr::include_graphics("screenshots/printlayout.png")
@@ -196,6 +223,7 @@ knitr::include_graphics("screenshots/titlefontsize.png")
 knitr::include_graphics("screenshots/addcredits.png")
 ```
 
+## Export the completed map from QGIS 
 
 ```{r, echo=F, fig.cap="Exporting a completed map from QGIS" }
 knitr::include_graphics("screenshots/mapexport.png")

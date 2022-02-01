@@ -165,6 +165,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5" data-path="building-maps-in-quantum-geographic-information-systems-qgis.html"><a href="building-maps-in-quantum-geographic-information-systems-qgis.html"><i class="fa fa-check"></i><b>5</b> Building Maps in Quantum Geographic Information Systems (QGIS)</a>
 <ul>
 <li class="chapter" data-level="5.1" data-path="building-maps-in-quantum-geographic-information-systems-qgis.html"><a href="building-maps-in-quantum-geographic-information-systems-qgis.html#adding-a-spatial-dataset-to-qgis"><i class="fa fa-check"></i><b>5.1</b> Adding a spatial dataset to QGIS</a></li>
+<li class="chapter" data-level="5.2" data-path="building-maps-in-quantum-geographic-information-systems-qgis.html"><a href="building-maps-in-quantum-geographic-information-systems-qgis.html#inspect-the-shapefiles-attribute-table"><i class="fa fa-check"></i><b>5.2</b> Inspect the shapefile’s attribute table</a></li>
+<li class="chapter" data-level="5.3" data-path="building-maps-in-quantum-geographic-information-systems-qgis.html"><a href="building-maps-in-quantum-geographic-information-systems-qgis.html#add-tabular-csv-data-to-qgis"><i class="fa fa-check"></i><b>5.3</b> Add tabular CSV data to QGIS</a></li>
+<li class="chapter" data-level="5.4" data-path="building-maps-in-quantum-geographic-information-systems-qgis.html"><a href="building-maps-in-quantum-geographic-information-systems-qgis.html#join-the-tabular-data-usa_trifecta_data-to-the-shapefile-usa_shapefile"><i class="fa fa-check"></i><b>5.4</b> Join the tabular data (<code>usa_trifecta_data</code>) to the shapefile (<code>usa_shapefile</code>)</a></li>
+<li class="chapter" data-level="5.5" data-path="building-maps-in-quantum-geographic-information-systems-qgis.html"><a href="building-maps-in-quantum-geographic-information-systems-qgis.html#display-the-state-government-categorical-data-on-the-shapefile"><i class="fa fa-check"></i><b>5.5</b> Display the state government categorical data on the shapefile</a></li>
+<li class="chapter" data-level="5.6" data-path="building-maps-in-quantum-geographic-information-systems-qgis.html"><a href="building-maps-in-quantum-geographic-information-systems-qgis.html#make-a-print-map-using-the-print-layout-interface"><i class="fa fa-check"></i><b>5.6</b> Make a print map using the <code>Print Layout</code> interface</a></li>
+<li class="chapter" data-level="5.7" data-path="building-maps-in-quantum-geographic-information-systems-qgis.html"><a href="building-maps-in-quantum-geographic-information-systems-qgis.html#export-the-completed-map-from-qgis"><i class="fa fa-check"></i><b>5.7</b> Export the completed map from QGIS</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -237,13 +243,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## tmap mode set to plotting</code></pre>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="building-static-maps-in-r-studio.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(usa_shapefile)<span class="sc">+</span></span>
 <span id="cb9-2"><a href="building-static-maps-in-r-studio.html#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_polygons</span>()</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
 <pre><code>## tmap mode set to plotting</code></pre>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="building-static-maps-in-r-studio.html#cb11-1" aria-hidden="true" tabindex="-1"></a>usa_map<span class="ot">&lt;-</span><span class="fu">tm_shape</span>(usa_shapefile)<span class="sc">+</span></span>
 <span id="cb11-2"><a href="building-static-maps-in-r-studio.html#cb11-2" aria-hidden="true" tabindex="-1"></a>            <span class="fu">tm_polygons</span>()</span></code></pre></div>
 <pre><code>## tmap mode set to plotting</code></pre>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="building-static-maps-in-r-studio.html#cb13-1" aria-hidden="true" tabindex="-1"></a>usa_map</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
 </div>
 <div id="read-in-a-tabular-dataset-with-the-information-to-map" class="section level2" number="2.5">
 <h2><span class="header-section-number">2.5</span> Read in a tabular dataset with the information to map</h2>
@@ -329,7 +335,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb26-2"><a href="building-static-maps-in-r-studio.html#cb26-2" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">tm_polygons</span>(<span class="at">col=</span><span class="st">&quot;Composition&quot;</span>)</span>
 <span id="cb26-3"><a href="building-static-maps-in-r-studio.html#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-4"><a href="building-static-maps-in-r-studio.html#cb26-4" aria-hidden="true" tabindex="-1"></a>usa_trifecta_map</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
 <p>Adjust the color scheme, such that it is red for a Republican trifecta, dark blue for a democratic trifecta, and</p>
 <pre><code>## tmap mode set to plotting</code></pre>
 <div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="building-static-maps-in-r-studio.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sets composition variable as factor</span></span>
@@ -343,7 +349,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb30-5"><a href="building-static-maps-in-r-studio.html#cb30-5" aria-hidden="true" tabindex="-1"></a>                                <span class="at">palette=</span>colors)</span>
 <span id="cb30-6"><a href="building-static-maps-in-r-studio.html#cb30-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-7"><a href="building-static-maps-in-r-studio.html#cb30-7" aria-hidden="true" tabindex="-1"></a>usa_trifecta_map</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
 <p>Now, let’s shift the legend, remove the legend title, and add a title for the map:</p>
 <pre><code>## tmap mode set to plotting</code></pre>
 <div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="building-static-maps-in-r-studio.html#cb32-1" aria-hidden="true" tabindex="-1"></a>usa_trifecta_map<span class="ot">&lt;-</span>usa_trifecta_map<span class="ot">&lt;-</span><span class="fu">tm_shape</span>(usa_shapefile_trifecta)<span class="sc">+</span></span>
@@ -358,7 +364,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb32-10"><a href="building-static-maps-in-r-studio.html#cb32-10" aria-hidden="true" tabindex="-1"></a>                    </span>
 <span id="cb32-11"><a href="building-static-maps-in-r-studio.html#cb32-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb32-12"><a href="building-static-maps-in-r-studio.html#cb32-12" aria-hidden="true" tabindex="-1"></a>usa_trifecta_map</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
 </div>
 </div>
             </section>
