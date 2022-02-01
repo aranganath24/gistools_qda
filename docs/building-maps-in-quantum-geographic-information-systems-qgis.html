@@ -154,10 +154,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.2" data-path="building-static-maps-in-r-studio.html"><a href="building-static-maps-in-r-studio.html#read-in-a-spatial-dataset"><i class="fa fa-check"></i><b>2.2</b> Read in a spatial dataset</a></li>
 <li class="chapter" data-level="2.3" data-path="building-static-maps-in-r-studio.html"><a href="building-static-maps-in-r-studio.html#view-the-spatial-datasets-attribute-table"><i class="fa fa-check"></i><b>2.3</b> View the spatial dataset’s attribute table</a></li>
 <li class="chapter" data-level="2.4" data-path="building-static-maps-in-r-studio.html"><a href="building-static-maps-in-r-studio.html#map-the-spatial-dataset"><i class="fa fa-check"></i><b>2.4</b> Map the spatial dataset</a></li>
-<li class="chapter" data-level="2.5" data-path="building-static-maps-in-r-studio.html"><a href="building-static-maps-in-r-studio.html#read-in-a-tabular-dataset-with-the-information-to-map"><i class="fa fa-check"></i><b>2.5</b> Read in a tabular dataset with the information to map</a></li>
-<li class="chapter" data-level="2.6" data-path="building-static-maps-in-r-studio.html"><a href="building-static-maps-in-r-studio.html#load-tabular-data"><i class="fa fa-check"></i><b>2.6</b> Load Tabular data</a></li>
-<li class="chapter" data-level="2.7" data-path="building-static-maps-in-r-studio.html"><a href="building-static-maps-in-r-studio.html#merge-data"><i class="fa fa-check"></i><b>2.7</b> Merge data</a></li>
-<li class="chapter" data-level="2.8" data-path="building-static-maps-in-r-studio.html"><a href="building-static-maps-in-r-studio.html#map-the-trifecta-data"><i class="fa fa-check"></i><b>2.8</b> Map the trifecta data</a></li>
+<li class="chapter" data-level="2.5" data-path="building-static-maps-in-r-studio.html"><a href="building-static-maps-in-r-studio.html#read-in-the-tabular-dataset-containing-the-information-to-map"><i class="fa fa-check"></i><b>2.5</b> Read in the tabular dataset containing the information to map</a></li>
+<li class="chapter" data-level="2.6" data-path="building-static-maps-in-r-studio.html"><a href="building-static-maps-in-r-studio.html#merge-data"><i class="fa fa-check"></i><b>2.6</b> Merge data</a></li>
+<li class="chapter" data-level="2.7" data-path="building-static-maps-in-r-studio.html"><a href="building-static-maps-in-r-studio.html#map-the-trifecta-data"><i class="fa fa-check"></i><b>2.7</b> Map the trifecta data</a></li>
+<li class="chapter" data-level="2.8" data-path="building-static-maps-in-r-studio.html"><a href="building-static-maps-in-r-studio.html#summary-script"><i class="fa fa-check"></i><b>2.8</b> Summary Script</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="building-web-maps-in-r-studio.html"><a href="building-web-maps-in-r-studio.html"><i class="fa fa-check"></i><b>3</b> Building Web Maps in R Studio</a></li>
 <li class="chapter" data-level="4" data-path="exporting-maps-from-r-studio.html"><a href="exporting-maps-from-r-studio.html"><i class="fa fa-check"></i><b>4</b> Exporting Maps from R Studio</a></li>
@@ -194,7 +194,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="building-maps-in-quantum-geographic-information-systems-qgis" class="section level1" number="5">
 <h1><span class="header-section-number">5</span> Building Maps in Quantum Geographic Information Systems (QGIS)</h1>
 <p>When you open up a new QGIS project, the interface will look something like this:</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-38"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-31"></span>
 <img src="screenshots/qgis_window.png" alt="The main QGIS window" width="1062" />
 <p class="caption">
 Figure 5.1: The main QGIS window
@@ -203,35 +203,35 @@ Figure 5.1: The main QGIS window
 <div id="adding-a-spatial-dataset-to-qgis" class="section level2" number="5.1">
 <h2><span class="header-section-number">5.1</span> Adding a spatial dataset to QGIS</h2>
 <p>To add a spatial dataset (and in particular, a shapefile) to QGIS, first select <code>Layer</code> from the top menu, scroll down to <code>Add Layer</code> and then select <code>Add Vector Layer</code>:</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-39"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-32"></span>
 <img src="screenshots/add_vector_layer.png" alt="Navigating to the 'Add Vector Layer' Menu" width="898" />
 <p class="caption">
 Figure 5.2: Navigating to the ‘Add Vector Layer’ Menu
 </p>
 </div>
 <p>This will open up the <code>Data Source Manager|Vector</code> dialog box. Under the <code>Source</code> tab, click on the ellipsis that is to the right of the box next to the <code>Vector Dataset(s)</code> label. This <code>Browse</code> button will open up another dialog box, from which you can navigate to the directory containing your shapefile.</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-40"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-33"></span>
 <img src="screenshots/browse.png" alt="Click the 'Browse' button to navigate to your shapefile" width="947" />
 <p class="caption">
 Figure 5.3: Click the ‘Browse’ button to navigate to your shapefile
 </p>
 </div>
 Once you are in the directory containing the shapefile you want to import, select the file with the <code>.shp</code> extension, and click <code>Open</code>.
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-41"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-34"></span>
 <img src="screenshots/select_shapefile.png" alt="Select shapefile from directory" width="891" />
 <p class="caption">
 Figure 5.4: Select shapefile from directory
 </p>
 </div>
 <p>At this point, you will see the file path to the shapefile under the <code>Source</code> tab. Once you see this path, go ahead and click the <code>Add</code> button:</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-42"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-35"></span>
 <img src="screenshots/add_shapefile.png" alt="Confirm the shapefile's path and click 'Add'" width="915" />
 <p class="caption">
 Figure 5.5: Confirm the shapefile’s path and click ‘Add’
 </p>
 </div>
 <p>Once the shapefile has been added, it will appear in the QGIS project window. Note that the color of the shapefile when it is first imported is arbitrarily set by QGIS, but this initial color can always be changed.</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-43"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-36"></span>
 <img src="screenshots/rendered_shapefile.png" alt="The rendered shapefile/spatial dataset rendered in the QGIS project window" width="1055" />
 <p class="caption">
 Figure 5.6: The rendered shapefile/spatial dataset rendered in the QGIS project window
@@ -241,21 +241,21 @@ Figure 5.6: The rendered shapefile/spatial dataset rendered in the QGIS project 
 <div id="inspect-the-shapefiles-attribute-table" class="section level2" number="5.2">
 <h2><span class="header-section-number">5.2</span> Inspect the shapefile’s attribute table</h2>
 <p>To inspect the attribute table that is associated with the shapefile, right-click on the shapefile in the <code>Layers</code> window, and select <code>Open Attribute Table</code>.</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-44"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-37"></span>
 <img src="screenshots/open_attribute_table.png" alt="Open the the shapefile's attribute table" width="921" />
 <p class="caption">
 Figure 5.7: Open the the shapefile’s attribute table
 </p>
 </div>
 <p>When the attribute table is open, it will look something like this. When you select a record in the attribute table (by clicking on it), the corresponding geographic attribute will automatically be selected on the map (and vice versa). Here, we clicked on the <code>Colorado</code> record within the attribute table, which simultaneously highlighted Colorado on the shapefile’s geographic representation in the project window:</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-45"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-38"></span>
 <img src="screenshots/attribute_table_selection.png" alt="Select a record within the opened attribute table" width="1049" />
 <p class="caption">
 Figure 5.8: Select a record within the opened attribute table
 </p>
 </div>
 <p>If you want to deselect a selected record, click the <code>Deselect all features from the layer</code> button in the menu bar on top of the attribute table:</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-46"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-39"></span>
 <img src="screenshots/deselect_layer.png" alt="Deselect a selected record" width="840" />
 <p class="caption">
 Figure 5.9: Deselect a selected record
@@ -266,28 +266,28 @@ Figure 5.9: Deselect a selected record
 <h2><span class="header-section-number">5.3</span> Add tabular CSV data to QGIS</h2>
 <p>Having adding the shapefile to QGIS, let’s import the tabular dataset (stored as a CSV file) that contains information on partisan control over state governments, which is the data that we want to ultimately visualize on a map.</p>
 <p>To add the CSV file, click the <code>Layer</code> menu from the QGIS menu bar, and then select <code>Add Layer</code> followed by <code>Add Delimited Text Layer</code>:</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-47"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-40"></span>
 <img src="screenshots/delimited_text.png" alt="Navigate to menu that facilitates the importing of tabular data" width="1047" />
 <p class="caption">
 Figure 5.10: Navigate to menu that facilitates the importing of tabular data
 </p>
 </div>
 <p>Click on the ellipsis next to the <code>File name</code> bar, and then navigate to the CSV file on your computer and add it; at this point, the file path to the CSV will appear next to the <code>File name</code> bar. Under the <code>File Format</code> section, make sure that the <code>CSV (comma separated values)</code> button is selected. Finally, under the <code>Geometry Definition</code> section, select the <code>No geometry (attribute table only)</code> button. Once these selections are made, go ahead and click the <code>Add</code> button on the bottom of the dialog box.</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-48"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-41"></span>
 <img src="screenshots/delimited_text_import.png" alt="Set paremeters before adding the CSV file" width="936" />
 <p class="caption">
 Figure 5.11: Set paremeters before adding the CSV file
 </p>
 </div>
 <p>At this point, you’ll notice the CSV file (named <code>usa_trifecta_data</code>) added to the <code>Layers</code> section on the bottom-left of the QGIS interface (right above the shapefile). To inspect the CSV file, right-click on the file in the <code>Layers</code> menu, and select <code>Open Attribute Table</code>,</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-49"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-42"></span>
 <img src="screenshots/open_tabular_data.png" alt="Open the CSV file within QGIS" width="1059" />
 <p class="caption">
 Figure 5.12: Open the CSV file within QGIS
 </p>
 </div>
 <p>The tabular dataset/CSV file, when opened up in QGIS, will look something like this:</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-50"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-43"></span>
 <img src="screenshots/inspect_table.png" alt="The tabular dataset open within QGIS" width="1055" />
 <p class="caption">
 Figure 5.13: The tabular dataset open within QGIS
@@ -296,31 +296,37 @@ Figure 5.13: The tabular dataset open within QGIS
 </div>
 <div id="join-the-tabular-data-usa_trifecta_data-to-the-shapefile-usa_shapefile" class="section level2" number="5.4">
 <h2><span class="header-section-number">5.4</span> Join the tabular data (<code>usa_trifecta_data</code>) to the shapefile (<code>usa_shapefile</code>)</h2>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-51"></span>
+<p>Now that we have both the shapefile and tabular CSV data in QGIS, let’s join the latter to the former so that we can display our data of interest on a map. To initiate the join, right-click the shapefile (<code>usa_shapefile</code>) in the <code>Layers</code> box, and select <code>Properties</code>.</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-44"></span>
 <img src="screenshots/25.png" alt="Open the 'properties' dialog box" width="1037" />
 <p class="caption">
 Figure 5.14: Open the ‘properties’ dialog box
 </p>
 </div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-52"></span>
+<p>Within the <code>Layer Properties</code> dialog box that opens up, select the <code>Joins</code> tab. Once the <code>Joins</code> tab is open, you’ll see a green <code>+</code> sign on the lower left. Go ahead and select it to open the <code>Add Vector Join</code> dialog box:</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-45"></span>
 <img src="screenshots/26.png" alt="Initiating a join" width="1054" />
 <p class="caption">
 Figure 5.15: Initiating a join
 </p>
 </div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-53"></span>
+<p>Once the <code>Add Vector Join</code> dialog box is open, select the name of the CSV file within the <code>Join layer</code> dialog box. Select <code>abbrev</code> for both <code>Join field</code> and <code>Target field</code>, since the name of the variable we’re matching on is <code>abbrev</code> in both datasets (recall that the <code>abbrev</code> field contains two-letter state abbreviations). If, for example, the name of the field containing abbreviations was <code>abbreviations</code> in the shapefile, but <code>abbrev</code> in the CSV dataset, you would have selected <code>abbreviations</code> in <code>Join field</code> and <code>abbrev</code> in <code>Target field</code>.</p>
+<p>After making these selections, go ahead and click <code>OK</code> to close the <code>Add vector join</code> dialog box:</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-46"></span>
 <img src="screenshots/30.png" alt="The 'Add vector join' dialog box" width="1056" />
 <p class="caption">
 Figure 5.16: The ‘Add vector join’ dialog box
 </p>
 </div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-54"></span>
+<p>Then, finalize the join by clicking <code>OK</code> within the <code>Layer Properties</code> dialog box:</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-47"></span>
 <img src="screenshots/31.png" alt="Finalize join" width="761" />
 <p class="caption">
 Figure 5.17: Finalize join
 </p>
 </div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-55"></span>
+<p>When you right-click the shapefile in the <code>Layers</code> box on the bottom-left and open up the attribute table, you’ll note that our data of interest from the CSV has been added to the shapefile:</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-48"></span>
 <img src="screenshots/35.png" alt="Shapefile's attribute table after join" width="966" />
 <p class="caption">
 Figure 5.18: Shapefile’s attribute table after join
@@ -329,148 +335,175 @@ Figure 5.18: Shapefile’s attribute table after join
 </div>
 <div id="display-the-state-government-categorical-data-on-the-shapefile" class="section level2" number="5.5">
 <h2><span class="header-section-number">5.5</span> Display the state government categorical data on the shapefile</h2>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-56"></span>
+<p>Now that the data we would like to map is attached to the shapefile, let’s go ahead and map it. To do so, right-click the shapefile from the <code>Layers</code> box, and select <code>Properties</code> (just as you did to implement the join). This time, once the <code>Layer Properties</code> dialog box is open, select the <code>Symbology</code> tab:</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-49"></span>
 <img src="screenshots/symbology1.png" alt="Opening the `Symbology` tab from the `Properties` dialog box" width="895" />
 <p class="caption">
 Figure 5.19: Opening the <code>Symbology</code> tab from the <code>Properties</code> dialog box
 </p>
 </div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-57"></span>
+<p>On the top of the <code>Symbology</code> tab that opens up, you’ll note a drop-down menu; select <code>Categorized</code> since we’re working with categorical data.</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-50"></span>
 <img src="screenshots/categorized.png" alt="Select classification scheme from menu bar; here, 'Categorized'" width="949" />
 <p class="caption">
 Figure 5.20: Select classification scheme from menu bar; here, ‘Categorized’
 </p>
 </div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-58"></span>
+<p>Next to the <code>Value</code> field, select <code>usa_trifecta_data_Composition</code>, which is the name of the field in the shapefile that we’d like to map:</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-51"></span>
 <img src="screenshots/symbology3.png" alt="Select column containing categories to be mapped from the 'value' drop-down menu" width="884" />
 <p class="caption">
 Figure 5.21: Select column containing categories to be mapped from the ‘value’ drop-down menu
 </p>
 </div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-59"></span>
+<p>Once you do so, you’ll see that field’s categories appear, with arbitrary colors next to them. Deselect the <code>Symbol</code> tick mark next to <code>all other values</code>; this removes Puerto Rico and DC from the map, which is appropriate since we’re only interested in current states.</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-52"></span>
 <img src="screenshots/selecting_categories.png" alt="Select categories to be displayed" width="781" />
 <p class="caption">
 Figure 5.22: Select categories to be displayed
 </p>
 </div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-60"></span>
+<p>To change the color used to represent a given category, simply double-click on the square color button next to it, and choose the desired color in the <code>Color</code> menu of the <code>Symbol Selector</code> dialog box:</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-53"></span>
 <img src="screenshots/colors.png" alt="Select colors for each category" width="940" />
 <p class="caption">
 Figure 5.23: Select colors for each category
 </p>
 </div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-61"></span>
+<p>Once you’ve finished making your desired color selections, click <code>Apply</code> on the bottom-left of the dialog box. Then, go ahead and click <code>OK</code>:</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-54"></span>
 <img src="screenshots/colors2.png" alt="Apply color changes" width="939" />
 <p class="caption">
 Figure 5.24: Apply color changes
 </p>
 </div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-62"></span>
+<p>At this point, the shapefile will look something like this:</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-55"></span>
 <img src="screenshots/modified_map.png" alt="Map with changes applied" width="1054" />
 <p class="caption">
 Figure 5.25: Map with changes applied
 </p>
 </div>
+<p>The data has been visualized on your shapefile!</p>
 </div>
 <div id="make-a-print-map-using-the-print-layout-interface" class="section level2" number="5.6">
 <h2><span class="header-section-number">5.6</span> Make a print map using the <code>Print Layout</code> interface</h2>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-63"></span>
+<p>At this point, we can turn to the process of turning this shapefile into an exportable print map in QGIS. First, select <code>Project</code> from the topmost QGIS menu bar, and select <code>New Print Layout</code>.</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-56"></span>
 <img src="screenshots/printlayout.png" alt="Open Print Layout" width="960" />
 <p class="caption">
 Figure 5.26: Open Print Layout
 </p>
 </div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-64"></span>
+<p>You will be prompoted to give your print layout a descriptive name:</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-57"></span>
 <img src="screenshots/print_layout_title.png" alt="Give Print Layout a title" width="1014" />
 <p class="caption">
 Figure 5.27: Give Print Layout a title
 </p>
 </div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-65"></span>
+<p>The Print Layout that opens will look something like the image below. To add the image of our shapefile to the print layout, click on the <code>Add Item</code> menu bar on top, and choose <code>Add Map</code>:</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-58"></span>
 <img src="screenshots/addmap.png" alt="Click 'Add Map' from the 'Add Item' menu bar" width="836" />
 <p class="caption">
 Figure 5.28: Click ‘Add Map’ from the ‘Add Item’ menu bar
 </p>
 </div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-66"></span>
+<p>After selecting <code>Add Map</code>, click on the top-left of the map canvas, and drag to the bottom-right:</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-59"></span>
 <img src="screenshots/clickdrag.png" alt="Click and drag across the map canvas" width="897" />
 <p class="caption">
 Figure 5.29: Click and drag across the map canvas
 </p>
 </div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-67"></span>
+<p>This will add an image to the print layout that is based on the shapefile that is open in the main QGIS project window:</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-60"></span>
 <img src="screenshots/map_print_layout.png" alt="Shapefile imported into QGIS print layout as a map" width="889" />
 <p class="caption">
 Figure 5.30: Shapefile imported into QGIS print layout as a map
 </p>
 </div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-68"></span>
+<p>To add a legend, click the <code>Add Item</code> menu from the print layout’s menu bar, and select <code>Add Legend</code>:</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-61"></span>
 <img src="screenshots/addlegend.png" alt="Add a legend from the 'Add Item' menu" width="665" />
 <p class="caption">
 Figure 5.31: Add a legend from the ‘Add Item’ menu
 </p>
 </div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-69"></span>
+<p>Click and drag in approximately the area you’d like the legend to appear (but note that you can move anything added to the print layout by simply clicking and dragging). On the right, you’ll see a <code>Legend Properties</code> dialog box that will allow you to customize the initial appearance of the legend:</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-62"></span>
 <img src="screenshots/legendimported.png" alt="Legend's initial appearance" width="963" />
 <p class="caption">
 Figure 5.32: Legend’s initial appearance
 </p>
 </div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-70"></span>
+<p>Let’s make a few changes to the legend. We’ll remove the title and subtitles (i.e. “usa_trifecta_data”, and “usa_shapefile”) and remove the final, turquoise square (which was used to represent NA values, but which no longer serves a purpose since we removed PR and DC from the map).</p>
+<p>First, uncheck the <code>Auto update</code> button in the <code>Legend Items</code> section:</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-63"></span>
 <img src="screenshots/autoupdate.png" alt="Uncheck the auto update button" width="937" />
 <p class="caption">
 Figure 5.33: Uncheck the auto update button
 </p>
 </div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-71"></span>
+<p>Scroll down, and highlight the row containing the turquoise square. Then, click the red <code>-</code> button to remove it:</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-64"></span>
 <img src="screenshots/remove_legend_item.png" alt="Remove superfluous legend category" width="931" />
 <p class="caption">
 Figure 5.34: Remove superfluous legend category
 </p>
 </div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-72"></span>
+<p>To remove the <code>usa_shapefile</code> label, right-click it in the <code>Legend Properties</code> dialog box, and click <code>Hidden</code>:</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-65"></span>
 <img src="screenshots/delete_legend_items.png" alt="Remove superfluous legend label" width="945" />
 <p class="caption">
 Figure 5.35: Remove superfluous legend label
 </p>
 </div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-73"></span>
+<p>Repeat this process for the <code>usa_trifecta_data</code> title.</p>
+<p>To increase the size or font of the legend text, first scroll down in the <code>Legend Properties</code> dialog box to the <code>Fonts and Text Formatting</code> section:</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-66"></span>
 <img src="screenshots/font.png" alt="Scroll to legend dialog box's 'Font' section" width="858" />
 <p class="caption">
 Figure 5.36: Scroll to legend dialog box’s ‘Font’ section
 </p>
 </div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-74"></span>
+<p>Then, click on the <code>Font</code> drop-down menu below the <code>Item Labels</code> subsection:</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-67"></span>
 <img src="screenshots/editfont.png" alt="Click on the 'Font' button under the 'Item Labels' heading" width="894" />
 <p class="caption">
 Figure 5.37: Click on the ‘Font’ button under the ‘Item Labels’ heading
 </p>
 </div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-75"></span>
+<p>A <code>Text Format</code> dialog box will then open up, allowing you to customize the legend’s font and other aspects of its appearance:</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-68"></span>
 <img src="screenshots/fontdialogbox.png" alt="Set legend font preferences" width="918" />
 <p class="caption">
 Figure 5.38: Set legend font preferences
 </p>
 </div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-76"></span>
+<p>To add a map title (or any other text) to your map, select the <code>Add Item</code> menu, and click <code>Add Label</code>:</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-69"></span>
 <img src="screenshots/addlabel.png" alt="Click 'Add Label' from the 'Add Item' menu" width="916" />
 <p class="caption">
 Figure 5.39: Click ‘Add Label’ from the ‘Add Item’ menu
 </p>
 </div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-77"></span>
+<p>Click and drag to create a text box. You can alter the text within the text box in the <code>Label Properties</code> dialog box that opens to the right:</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-70"></span>
 <img src="screenshots/addtitle.png" alt="Print the text for the title in the 'Main Properties' dialog box associated with the label" width="864" />
 <p class="caption">
 Figure 5.40: Print the text for the title in the ‘Main Properties’ dialog box associated with the label
 </p>
 </div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-78"></span>
+<p>You can alter the title’s font and size by clicking the <code>Font</code> drag-down menu that lies right below the <code>Appearance</code> label. This will open up the <code>Text Format</code> dialog box, which allows you to customize your text’s appearance:</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-71"></span>
 <img src="screenshots/titlefontsize.png" alt="Customize the title's font and size" width="899" />
 <p class="caption">
 Figure 5.41: Customize the title’s font and size
 </p>
 </div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-79"></span>
+<p>You can add and customize a map credits section using the same process (i.e. add and customize another label)</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-72"></span>
 <img src="screenshots/addcredits.png" alt="Add map credits" width="904" />
 <p class="caption">
 Figure 5.42: Add map credits
@@ -479,13 +512,15 @@ Figure 5.42: Add map credits
 </div>
 <div id="export-the-completed-map-from-qgis" class="section level2" number="5.7">
 <h2><span class="header-section-number">5.7</span> Export the completed map from QGIS</h2>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-80"></span>
+<p>Once the map is satisfactory, you can export it by selected <code>Layout</code> from the QGIS menu, and selecting the option to export either as an image, SVG, or PDF file. Once you follow the subsequent prompts, the map will be written to your disk in the location you specify:</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-73"></span>
 <img src="screenshots/mapexport.png" alt="Exporting a completed map from QGIS" width="789" />
 <p class="caption">
 Figure 5.43: Exporting a completed map from QGIS
 </p>
 </div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-81"></span>
+<p>Once you’ve exported the map, open it up and ensure that everything looks in order:</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-74"></span>
 <img src="screenshots/trifectas_qgis.png" alt="The map exported from QGIS as a png file" width="1754" />
 <p class="caption">
 Figure 5.44: The map exported from QGIS as a png file

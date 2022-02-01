@@ -154,10 +154,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.2" data-path="building-static-maps-in-r-studio.html"><a href="building-static-maps-in-r-studio.html#read-in-a-spatial-dataset"><i class="fa fa-check"></i><b>2.2</b> Read in a spatial dataset</a></li>
 <li class="chapter" data-level="2.3" data-path="building-static-maps-in-r-studio.html"><a href="building-static-maps-in-r-studio.html#view-the-spatial-datasets-attribute-table"><i class="fa fa-check"></i><b>2.3</b> View the spatial dataset’s attribute table</a></li>
 <li class="chapter" data-level="2.4" data-path="building-static-maps-in-r-studio.html"><a href="building-static-maps-in-r-studio.html#map-the-spatial-dataset"><i class="fa fa-check"></i><b>2.4</b> Map the spatial dataset</a></li>
-<li class="chapter" data-level="2.5" data-path="building-static-maps-in-r-studio.html"><a href="building-static-maps-in-r-studio.html#read-in-a-tabular-dataset-with-the-information-to-map"><i class="fa fa-check"></i><b>2.5</b> Read in a tabular dataset with the information to map</a></li>
-<li class="chapter" data-level="2.6" data-path="building-static-maps-in-r-studio.html"><a href="building-static-maps-in-r-studio.html#load-tabular-data"><i class="fa fa-check"></i><b>2.6</b> Load Tabular data</a></li>
-<li class="chapter" data-level="2.7" data-path="building-static-maps-in-r-studio.html"><a href="building-static-maps-in-r-studio.html#merge-data"><i class="fa fa-check"></i><b>2.7</b> Merge data</a></li>
-<li class="chapter" data-level="2.8" data-path="building-static-maps-in-r-studio.html"><a href="building-static-maps-in-r-studio.html#map-the-trifecta-data"><i class="fa fa-check"></i><b>2.8</b> Map the trifecta data</a></li>
+<li class="chapter" data-level="2.5" data-path="building-static-maps-in-r-studio.html"><a href="building-static-maps-in-r-studio.html#read-in-the-tabular-dataset-containing-the-information-to-map"><i class="fa fa-check"></i><b>2.5</b> Read in the tabular dataset containing the information to map</a></li>
+<li class="chapter" data-level="2.6" data-path="building-static-maps-in-r-studio.html"><a href="building-static-maps-in-r-studio.html#merge-data"><i class="fa fa-check"></i><b>2.6</b> Merge data</a></li>
+<li class="chapter" data-level="2.7" data-path="building-static-maps-in-r-studio.html"><a href="building-static-maps-in-r-studio.html#map-the-trifecta-data"><i class="fa fa-check"></i><b>2.7</b> Map the trifecta data</a></li>
+<li class="chapter" data-level="2.8" data-path="building-static-maps-in-r-studio.html"><a href="building-static-maps-in-r-studio.html#summary-script"><i class="fa fa-check"></i><b>2.8</b> Summary Script</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="building-web-maps-in-r-studio.html"><a href="building-web-maps-in-r-studio.html"><i class="fa fa-check"></i><b>3</b> Building Web Maps in R Studio</a></li>
 <li class="chapter" data-level="4" data-path="exporting-maps-from-r-studio.html"><a href="exporting-maps-from-r-studio.html"><i class="fa fa-check"></i><b>4</b> Exporting Maps from R Studio</a></li>
@@ -204,11 +204,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>After your libraries are successfully installed and loaded, set your working directory by passing the file path of the directory that contains your data to the <code>setwd</code> function, as in the example below (but note your file path will look different).</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="building-static-maps-in-r-studio.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory to the directory containing your data</span></span>
 <span id="cb3-2"><a href="building-static-maps-in-r-studio.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;/Users/adra7980/Documents/git_repositories/gistools_qda/data&quot;</span>)</span></code></pre></div>
-<p>If you don’t know the relevant file path, you can set your working directory manually by opening the <code>Session</code> menu, scrolling down to</p>
+<p>If you don’t know the relevant file path, you can set your working directory manually by opening the <code>Session</code> menu, scrolling down to <code>Set Working Directory</code>, clicking <code>Choose Directory</code>, and then following the prompts.</p>
 </div>
 <div id="read-in-a-spatial-dataset" class="section level2" number="2.2">
 <h2><span class="header-section-number">2.2</span> Read in a spatial dataset</h2>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="building-static-maps-in-r-studio.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in the shapefile named &quot;usa_shapefile.shp&quot;</span></span>
+<p>First, let’s read in our spatial dataset, titled <code>usa_shapefile.shp</code> using the <code>st_read</code> function, and then assigning the spatial dataset to a new object named <code>usa_shapefile</code></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="building-static-maps-in-r-studio.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in the shapefile named &quot;usa_shapefile.shp&quot; and assign to new object named &quot;usa_shapefile&quot;</span></span>
 <span id="cb4-2"><a href="building-static-maps-in-r-studio.html#cb4-2" aria-hidden="true" tabindex="-1"></a>usa_shapefile<span class="ot">&lt;-</span><span class="fu">st_read</span>(<span class="st">&quot;usa_shapefile.shp&quot;</span>)</span></code></pre></div>
 <pre><code>## Reading layer `usa_shapefile&#39; from data source `/Users/adra7980/Documents/git_repositories/gistools_qda/data/usa_shapefile.shp&#39; using driver `ESRI Shapefile&#39;
 ## Simple feature collection with 52 features and 3 fields
@@ -219,6 +220,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="view-the-spatial-datasets-attribute-table" class="section level2" number="2.3">
 <h2><span class="header-section-number">2.3</span> View the spatial dataset’s attribute table</h2>
+<p>To view the spatial dataset’s attributes, simply print its name:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="building-static-maps-in-r-studio.html#cb6-1" aria-hidden="true" tabindex="-1"></a>usa_shapefile</span></code></pre></div>
 <pre><code>## Simple feature collection with 52 features and 3 fields
 ## geometry type:  MULTIPOLYGON
@@ -237,23 +239,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 8     37 North Carolina     NC MULTIPOLYGON (((1192302 -79...
 ## 9     39           Ohio     OH MULTIPOLYGON (((1085606 548...
 ## 10    42   Pennsylvania     PA MULTIPOLYGON (((1733137 446...</code></pre>
+<p>To view the attribute table in R Studio’s data viewer, pass it to the <code>View</code> function:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="building-static-maps-in-r-studio.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(usa_shapefile)</span></code></pre></div>
 </div>
 <div id="map-the-spatial-dataset" class="section level2" number="2.4">
 <h2><span class="header-section-number">2.4</span> Map the spatial dataset</h2>
+<p>To view render the spatial dataset’s geographic attributes, we can use the <code>tmap</code> package. First, pass the name of the spatial object (<code>usa_shapefile</code>) to the <code>tm_shape</code> function, and then indicate that the spatial attributes are polyons with the <code>tm_polygons</code> function. The two functions should be connected with a <code>+</code> sign</p>
 <pre><code>## tmap mode set to plotting</code></pre>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="building-static-maps-in-r-studio.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(usa_shapefile)<span class="sc">+</span></span>
-<span id="cb9-2"><a href="building-static-maps-in-r-studio.html#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_polygons</span>()</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="building-static-maps-in-r-studio.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the &quot;tm_shape&quot; and &quot;tm_polygons&quot; function to render the polygons in the spatial dataset</span></span>
+<span id="cb10-2"><a href="building-static-maps-in-r-studio.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(usa_shapefile)<span class="sc">+</span></span>
+<span id="cb10-3"><a href="building-static-maps-in-r-studio.html#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_polygons</span>()</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>The polygons (here, US states) will be printed in the “Plots” tab of the R Studio interface.</p>
+<p>For convenience, we can assign the basic map of the shapefile’s polygons to its own object; here we’ll assign it to an object named <code>usa_map</code>.</p>
 <pre><code>## tmap mode set to plotting</code></pre>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="building-static-maps-in-r-studio.html#cb11-1" aria-hidden="true" tabindex="-1"></a>usa_map<span class="ot">&lt;-</span><span class="fu">tm_shape</span>(usa_shapefile)<span class="sc">+</span></span>
-<span id="cb11-2"><a href="building-static-maps-in-r-studio.html#cb11-2" aria-hidden="true" tabindex="-1"></a>            <span class="fu">tm_polygons</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="building-static-maps-in-r-studio.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigns map of &quot;usa_shapefile&quot; geographic attributes to a new object named &quot;usa_map&quot;</span></span>
+<span id="cb12-2"><a href="building-static-maps-in-r-studio.html#cb12-2" aria-hidden="true" tabindex="-1"></a>usa_map<span class="ot">&lt;-</span><span class="fu">tm_shape</span>(usa_shapefile)<span class="sc">+</span></span>
+<span id="cb12-3"><a href="building-static-maps-in-r-studio.html#cb12-3" aria-hidden="true" tabindex="-1"></a>            <span class="fu">tm_polygons</span>()</span></code></pre></div>
+<p>Now, we simply have to print <code>usa_map</code> to view the geographic attributes of <code>usa_shapefile</code>.</p>
 <pre><code>## tmap mode set to plotting</code></pre>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="building-static-maps-in-r-studio.html#cb13-1" aria-hidden="true" tabindex="-1"></a>usa_map</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="building-static-maps-in-r-studio.html#cb14-1" aria-hidden="true" tabindex="-1"></a>usa_map</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 </div>
-<div id="read-in-a-tabular-dataset-with-the-information-to-map" class="section level2" number="2.5">
-<h2><span class="header-section-number">2.5</span> Read in a tabular dataset with the information to map</h2>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="building-static-maps-in-r-studio.html#cb14-1" aria-hidden="true" tabindex="-1"></a>usa_trifecta_data<span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="st">&quot;usa_trifecta.csv&quot;</span>)</span></code></pre></div>
+<div id="read-in-the-tabular-dataset-containing-the-information-to-map" class="section level2" number="2.5">
+<h2><span class="header-section-number">2.5</span> Read in the tabular dataset containing the information to map</h2>
+<p>Now, let’s read in our CSV file, which contains the state government data we’d like to map. To do so, we can pass the name of the CSV file to the <code>read_csv</code> function. We’ll assign the CSV file to an object named <code>usa_trifecta</code></p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="building-static-maps-in-r-studio.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reads in &quot;usa_trifecta.csv&quot; and assigns the data to an object named &quot;usa_trifecta&quot;</span></span>
+<span id="cb15-2"><a href="building-static-maps-in-r-studio.html#cb15-2" aria-hidden="true" tabindex="-1"></a>usa_trifecta<span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="st">&quot;usa_trifecta.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## ── Column specification ─────────────────────────────────────────────────────────────────────────────────────────
 ## cols(
@@ -262,7 +274,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##   abbrev = col_character(),
 ##   Composition = col_character()
 ## )</code></pre>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="building-static-maps-in-r-studio.html#cb16-1" aria-hidden="true" tabindex="-1"></a>usa_trifecta_data</span></code></pre></div>
+<p>To open the dataset, type the name of the object in the console (or run it from your script):</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="building-static-maps-in-r-studio.html#cb17-1" aria-hidden="true" tabindex="-1"></a>usa_trifecta</span></code></pre></div>
 <pre><code>## # A tibble: 50 x 4
 ##    GEOID NAME        abbrev Composition        
 ##    &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;  &lt;chr&gt;              
@@ -277,38 +290,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9    12 Florida     FL     Republican Trifecta
 ## 10    13 Georgia     GA     Republican Trifecta
 ## # … with 40 more rows</code></pre>
+<p>To view the CSV data in R Studio’s data viewer, pass the object’s name to the <code>View</code> function:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="building-static-maps-in-r-studio.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(usa_trifecta)</span></code></pre></div>
 </div>
-<div id="load-tabular-data" class="section level2" number="2.6">
-<h2><span class="header-section-number">2.6</span> Load Tabular data</h2>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="building-static-maps-in-r-studio.html#cb18-1" aria-hidden="true" tabindex="-1"></a>usa_trifecta<span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="st">&quot;usa_trifecta.csv&quot;</span>)</span></code></pre></div>
-<pre><code>## 
-## ── Column specification ─────────────────────────────────────────────────────────────────────────────────────────
-## cols(
-##   GEOID = col_double(),
-##   NAME = col_character(),
-##   abbrev = col_character(),
-##   Composition = col_character()
-## )</code></pre>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="building-static-maps-in-r-studio.html#cb20-1" aria-hidden="true" tabindex="-1"></a>usa_trifecta</span></code></pre></div>
-<pre><code>## # A tibble: 50 x 4
-##    GEOID NAME        abbrev Composition        
-##    &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;  &lt;chr&gt;              
-##  1     1 Alabama     AL     Republican Trifecta
-##  2     2 Alaska      AK     Divided Government 
-##  3     4 Arizona     AZ     Republican Trifecta
-##  4     5 Arkansas    AR     Republican Trifecta
-##  5     6 California  CA     Democratic Trifecta
-##  6     8 Colorado    CO     Democratic Trifecta
-##  7     9 Connecticut CT     Democratic Trifecta
-##  8    10 Delaware    DE     Democratic Trifecta
-##  9    12 Florida     FL     Republican Trifecta
-## 10    13 Georgia     GA     Republican Trifecta
-## # … with 40 more rows</code></pre>
-</div>
-<div id="merge-data" class="section level2" number="2.7">
-<h2><span class="header-section-number">2.7</span> Merge data</h2>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="building-static-maps-in-r-studio.html#cb22-1" aria-hidden="true" tabindex="-1"></a>usa_shapefile_trifecta<span class="ot">&lt;-</span><span class="fu">right_join</span>(usa_shapefile, usa_trifecta, <span class="at">by=</span><span class="st">&quot;abbrev&quot;</span> )</span></code></pre></div>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="building-static-maps-in-r-studio.html#cb23-1" aria-hidden="true" tabindex="-1"></a>usa_shapefile_trifecta</span></code></pre></div>
+<div id="merge-data" class="section level2" number="2.6">
+<h2><span class="header-section-number">2.6</span> Merge data</h2>
+<p>Now, let’s merge our tabular CSV data into the spatial dataset, and assign the merged dataset to a new object named <code>usa_shapefile_trifecta</code>. To do so, we’ll use the <code>right_join</code> function. The first argument is the spatial object (<code>usa_shapefile</code>), while the second argument is the tabular data object (<code>usa_trifecta</code>). The third argument, <code>by="abbrev</code> indicates that the two datasets are to be joined based on the information contained in the <code>abbrev</code> field (i.e. 2-letter state codes).</p>
+<p>By using <code>right_join</code>, we’re specifying that we want to keep all the records in <code>usa_trifecta</code>, and discard any records that are in <code>usa_shapefile</code> but not <code>usa_trifecta</code>. This effectively removes DC and Puerto Rico from our joined dataset, which is appropriate in the context of this exercise, since these are not currently states.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="building-static-maps-in-r-studio.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Joins the &quot;usa_trifecta&quot; data to &quot;usa_shapefile&quot; based on the &quot;abbrev&quot; field that is in both datasets; the joined dataset is assigned to a new object named &quot;usa_shapefile_trifecta&quot;</span></span>
+<span id="cb20-2"><a href="building-static-maps-in-r-studio.html#cb20-2" aria-hidden="true" tabindex="-1"></a>usa_shapefile_trifecta<span class="ot">&lt;-</span><span class="fu">right_join</span>(usa_shapefile, usa_trifecta, <span class="at">by=</span><span class="st">&quot;abbrev&quot;</span> )</span></code></pre></div>
+<p>Before moving on, observe the contents of <code>usa_shapefile_trifecta</code> to ensure that the join has succeeded.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="building-static-maps-in-r-studio.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Prints contents of &quot;usa_shapefile_trifecta&quot;</span></span>
+<span id="cb21-2"><a href="building-static-maps-in-r-studio.html#cb21-2" aria-hidden="true" tabindex="-1"></a>usa_shapefile_trifecta</span></code></pre></div>
 <pre><code>## Simple feature collection with 50 features and 6 fields
 ## geometry type:  MULTIPOLYGON
 ## dimension:      XY
@@ -327,44 +320,103 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 9       39           Ohio     OH      39           Ohio Republican Trifecta MULTIPOLYGON (((1085606 548...
 ## 10      42   Pennsylvania     PA      42   Pennsylvania  Divided Government MULTIPOLYGON (((1733137 446...</code></pre>
 </div>
-<div id="map-the-trifecta-data" class="section level2" number="2.8">
-<h2><span class="header-section-number">2.8</span> Map the trifecta data</h2>
-<p>Start with a rough map:</p>
+<div id="map-the-trifecta-data" class="section level2" number="2.7">
+<h2><span class="header-section-number">2.7</span> Map the trifecta data</h2>
+<p>Now, we’re ready to map our data. Let’s start with a very rough map, which we’ll assign to an object named <code>usa_trifecta_map</code>. As before, we declare the spatial object that is the basis for the map (here, <code>usa_shapefile_trifecta</code>) using the <code>tm_shape</code> function. Then, we declare the column to be mapped (here, <code>Composition</code>) within the <code>tm_polygons</code> function:</p>
 <pre><code>## tmap mode set to plotting</code></pre>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="building-static-maps-in-r-studio.html#cb26-1" aria-hidden="true" tabindex="-1"></a>usa_trifecta_map<span class="ot">&lt;-</span><span class="fu">tm_shape</span>(usa_shapefile_trifecta)<span class="sc">+</span></span>
-<span id="cb26-2"><a href="building-static-maps-in-r-studio.html#cb26-2" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">tm_polygons</span>(<span class="at">col=</span><span class="st">&quot;Composition&quot;</span>)</span>
-<span id="cb26-3"><a href="building-static-maps-in-r-studio.html#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-4"><a href="building-static-maps-in-r-studio.html#cb26-4" aria-hidden="true" tabindex="-1"></a>usa_trifecta_map</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
-<p>Adjust the color scheme, such that it is red for a Republican trifecta, dark blue for a democratic trifecta, and</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="building-static-maps-in-r-studio.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Makes basic map of categories of interest</span></span>
+<span id="cb24-2"><a href="building-static-maps-in-r-studio.html#cb24-2" aria-hidden="true" tabindex="-1"></a>usa_trifecta_map<span class="ot">&lt;-</span><span class="fu">tm_shape</span>(usa_shapefile_trifecta)<span class="sc">+</span></span>
+<span id="cb24-3"><a href="building-static-maps-in-r-studio.html#cb24-3" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">tm_polygons</span>(<span class="at">col=</span><span class="st">&quot;Composition&quot;</span>)</span>
+<span id="cb24-4"><a href="building-static-maps-in-r-studio.html#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Prints map</span></span>
+<span id="cb24-5"><a href="building-static-maps-in-r-studio.html#cb24-5" aria-hidden="true" tabindex="-1"></a>usa_trifecta_map</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p>This default color scheme is not very intuitive, so let’s change it, such that Democratic trifectas are dark blue, Republican trifectas are dark red, and states with divided government are beige.</p>
+<p>To work intuitively with colors when dealing with categorical data, it is helpful to first declare the categorical data as a factor variable; specify the levels in the order you want your categories in the legend.</p>
 <pre><code>## tmap mode set to plotting</code></pre>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="building-static-maps-in-r-studio.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sets composition variable as factor</span></span>
-<span id="cb28-2"><a href="building-static-maps-in-r-studio.html#cb28-2" aria-hidden="true" tabindex="-1"></a>usa_shapefile_trifecta<span class="ot">&lt;-</span>usa_shapefile_trifecta <span class="sc">%&gt;%</span> </span>
-<span id="cb28-3"><a href="building-static-maps-in-r-studio.html#cb28-3" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">mutate</span>(<span class="at">Composition=</span><span class="fu">factor</span>(Composition, <span class="at">levels=</span><span class="fu">c</span>(<span class="st">&quot;Democratic Trifecta&quot;</span>, <span class="st">&quot;Republican Trifecta&quot;</span>, <span class="st">&quot;Divided Government&quot;</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="building-static-maps-in-r-studio.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sets composition variable as factor</span></span>
+<span id="cb26-2"><a href="building-static-maps-in-r-studio.html#cb26-2" aria-hidden="true" tabindex="-1"></a>usa_shapefile_trifecta<span class="ot">&lt;-</span>usa_shapefile_trifecta <span class="sc">%&gt;%</span> </span>
+<span id="cb26-3"><a href="building-static-maps-in-r-studio.html#cb26-3" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">mutate</span>(<span class="at">Composition=</span><span class="fu">factor</span>(Composition, <span class="at">levels=</span><span class="fu">c</span>(<span class="st">&quot;Democratic Trifecta&quot;</span>, <span class="st">&quot;Republican Trifecta&quot;</span>, <span class="st">&quot;Divided Government&quot;</span>)))</span></code></pre></div>
+<p>Now, create a vector of colors that corresponds to these levels, and assign this vector to an object named ` <code>colors</code>. The first color in the <code>colors</code> vector will be used for the “Democratic Trifecta” category, the second color for “Republican Trifecta”, and so on. The color codes can be found in this helpful color <a href="https://www.nceas.ucsb.edu/sites/default/files/2020-04/colorPaletteCheatsheet.pdf">cheatsheet</a>.</p>
+<p>Set the <code>colors</code> vector equal to <code>palette</code> within the <code>tm_polygons</code> function:</p>
 <pre><code>## tmap mode set to plotting</code></pre>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="building-static-maps-in-r-studio.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Maps data with custom colors; note the changed order in the legend</span></span>
-<span id="cb30-2"><a href="building-static-maps-in-r-studio.html#cb30-2" aria-hidden="true" tabindex="-1"></a>colors<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;navy&quot;</span>, <span class="st">&quot;red3&quot;</span>, <span class="st">&quot;seashell&quot;</span>)</span>
-<span id="cb30-3"><a href="building-static-maps-in-r-studio.html#cb30-3" aria-hidden="true" tabindex="-1"></a>usa_trifecta_map<span class="ot">&lt;-</span><span class="fu">tm_shape</span>(usa_shapefile_trifecta)<span class="sc">+</span></span>
-<span id="cb30-4"><a href="building-static-maps-in-r-studio.html#cb30-4" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">tm_polygons</span>(<span class="at">col=</span><span class="st">&quot;Composition&quot;</span>, </span>
-<span id="cb30-5"><a href="building-static-maps-in-r-studio.html#cb30-5" aria-hidden="true" tabindex="-1"></a>                                <span class="at">palette=</span>colors)</span>
-<span id="cb30-6"><a href="building-static-maps-in-r-studio.html#cb30-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-7"><a href="building-static-maps-in-r-studio.html#cb30-7" aria-hidden="true" tabindex="-1"></a>usa_trifecta_map</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
-<p>Now, let’s shift the legend, remove the legend title, and add a title for the map:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="building-static-maps-in-r-studio.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Maps data with custom colors; also, note the changed order in the legend</span></span>
+<span id="cb28-2"><a href="building-static-maps-in-r-studio.html#cb28-2" aria-hidden="true" tabindex="-1"></a>colors<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;navy&quot;</span>, <span class="st">&quot;red3&quot;</span>, <span class="st">&quot;seashell&quot;</span>)</span>
+<span id="cb28-3"><a href="building-static-maps-in-r-studio.html#cb28-3" aria-hidden="true" tabindex="-1"></a>usa_trifecta_map<span class="ot">&lt;-</span><span class="fu">tm_shape</span>(usa_shapefile_trifecta)<span class="sc">+</span></span>
+<span id="cb28-4"><a href="building-static-maps-in-r-studio.html#cb28-4" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">tm_polygons</span>(<span class="at">col=</span><span class="st">&quot;Composition&quot;</span>, </span>
+<span id="cb28-5"><a href="building-static-maps-in-r-studio.html#cb28-5" aria-hidden="true" tabindex="-1"></a>                                <span class="at">palette=</span>colors)</span>
+<span id="cb28-6"><a href="building-static-maps-in-r-studio.html#cb28-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-7"><a href="building-static-maps-in-r-studio.html#cb28-7" aria-hidden="true" tabindex="-1"></a>usa_trifecta_map</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p>Now, let’s shift the legend, remove the bounding box, remove the legend title, and add a title for the map.</p>
 <pre><code>## tmap mode set to plotting</code></pre>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="building-static-maps-in-r-studio.html#cb32-1" aria-hidden="true" tabindex="-1"></a>usa_trifecta_map<span class="ot">&lt;-</span>usa_trifecta_map<span class="ot">&lt;-</span><span class="fu">tm_shape</span>(usa_shapefile_trifecta)<span class="sc">+</span></span>
-<span id="cb32-2"><a href="building-static-maps-in-r-studio.html#cb32-2" aria-hidden="true" tabindex="-1"></a>                                      <span class="fu">tm_polygons</span>(<span class="at">col=</span><span class="st">&quot;Composition&quot;</span>, </span>
-<span id="cb32-3"><a href="building-static-maps-in-r-studio.html#cb32-3" aria-hidden="true" tabindex="-1"></a>                                                  <span class="at">palette=</span>colors,</span>
-<span id="cb32-4"><a href="building-static-maps-in-r-studio.html#cb32-4" aria-hidden="true" tabindex="-1"></a>                                                  <span class="at">title=</span><span class="st">&quot;&quot;</span>)<span class="sc">+</span></span>
-<span id="cb32-5"><a href="building-static-maps-in-r-studio.html#cb32-5" aria-hidden="true" tabindex="-1"></a>                                    <span class="fu">tm_layout</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="st">&quot;left&quot;</span>, <span class="st">&quot;center&quot;</span>),</span>
-<span id="cb32-6"><a href="building-static-maps-in-r-studio.html#cb32-6" aria-hidden="true" tabindex="-1"></a>                                              <span class="at">frame=</span><span class="cn">FALSE</span>,</span>
-<span id="cb32-7"><a href="building-static-maps-in-r-studio.html#cb32-7" aria-hidden="true" tabindex="-1"></a>                                              <span class="at">main.title=</span><span class="st">&quot;Partisan Composition of State Governments, 2022&quot;</span>,</span>
-<span id="cb32-8"><a href="building-static-maps-in-r-studio.html#cb32-8" aria-hidden="true" tabindex="-1"></a>                                              <span class="at">main.title.size=</span><span class="dv">1</span>,</span>
-<span id="cb32-9"><a href="building-static-maps-in-r-studio.html#cb32-9" aria-hidden="true" tabindex="-1"></a>                                              <span class="at">main.title.position=</span><span class="st">&quot;center&quot;</span>)</span>
-<span id="cb32-10"><a href="building-static-maps-in-r-studio.html#cb32-10" aria-hidden="true" tabindex="-1"></a>                    </span>
-<span id="cb32-11"><a href="building-static-maps-in-r-studio.html#cb32-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-12"><a href="building-static-maps-in-r-studio.html#cb32-12" aria-hidden="true" tabindex="-1"></a>usa_trifecta_map</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="building-static-maps-in-r-studio.html#cb30-1" aria-hidden="true" tabindex="-1"></a>usa_trifecta_map<span class="ot">&lt;-</span>usa_trifecta_map<span class="ot">&lt;-</span><span class="fu">tm_shape</span>(usa_shapefile_trifecta)<span class="sc">+</span> <span class="co"># indicates spatial object to map</span></span>
+<span id="cb30-2"><a href="building-static-maps-in-r-studio.html#cb30-2" aria-hidden="true" tabindex="-1"></a>                                      <span class="fu">tm_polygons</span>(<span class="at">col=</span><span class="st">&quot;Composition&quot;</span>, <span class="co"># indicates column with data to map</span></span>
+<span id="cb30-3"><a href="building-static-maps-in-r-studio.html#cb30-3" aria-hidden="true" tabindex="-1"></a>                                                  <span class="at">palette=</span>colors,    <span class="co"># sets colors</span></span>
+<span id="cb30-4"><a href="building-static-maps-in-r-studio.html#cb30-4" aria-hidden="true" tabindex="-1"></a>                                                  <span class="at">title=</span><span class="st">&quot;&quot;</span>)<span class="sc">+</span>         <span class="co"># removes legend title</span></span>
+<span id="cb30-5"><a href="building-static-maps-in-r-studio.html#cb30-5" aria-hidden="true" tabindex="-1"></a>                                    <span class="fu">tm_layout</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="st">&quot;left&quot;</span>, <span class="st">&quot;center&quot;</span>), <span class="co"># sets legend position</span></span>
+<span id="cb30-6"><a href="building-static-maps-in-r-studio.html#cb30-6" aria-hidden="true" tabindex="-1"></a>                                              <span class="at">frame=</span><span class="cn">FALSE</span>,          <span class="co"># removes map frame</span></span>
+<span id="cb30-7"><a href="building-static-maps-in-r-studio.html#cb30-7" aria-hidden="true" tabindex="-1"></a>                                              <span class="at">main.title=</span><span class="st">&quot;Partisan Composition of State Governments, 2022&quot;</span>, <span class="co"># sets map title</span></span>
+<span id="cb30-8"><a href="building-static-maps-in-r-studio.html#cb30-8" aria-hidden="true" tabindex="-1"></a>                                              <span class="at">main.title.size=</span><span class="dv">1</span>, <span class="co"># sets map title size</span></span>
+<span id="cb30-9"><a href="building-static-maps-in-r-studio.html#cb30-9" aria-hidden="true" tabindex="-1"></a>                                              <span class="at">main.title.position=</span><span class="st">&quot;center&quot;</span>) <span class="co"># sets map title position</span></span>
+<span id="cb30-10"><a href="building-static-maps-in-r-studio.html#cb30-10" aria-hidden="true" tabindex="-1"></a>                    </span>
+<span id="cb30-11"><a href="building-static-maps-in-r-studio.html#cb30-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-12"><a href="building-static-maps-in-r-studio.html#cb30-12" aria-hidden="true" tabindex="-1"></a>usa_trifecta_map</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<p>Now, let’s add a credits section, to indicate the map’s author and give credit to the source of the data. We can do so with the <code>tm_credits</code> function:</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="building-static-maps-in-r-studio.html#cb31-1" aria-hidden="true" tabindex="-1"></a>usa_trifecta_map<span class="ot">&lt;-</span><span class="fu">tm_shape</span>(usa_shapefile_trifecta)<span class="sc">+</span></span>
+<span id="cb31-2"><a href="building-static-maps-in-r-studio.html#cb31-2" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">tm_polygons</span>(<span class="at">col=</span><span class="st">&quot;Composition&quot;</span>, </span>
+<span id="cb31-3"><a href="building-static-maps-in-r-studio.html#cb31-3" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">palette=</span>colors,</span>
+<span id="cb31-4"><a href="building-static-maps-in-r-studio.html#cb31-4" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">title=</span><span class="st">&quot;&quot;</span>)<span class="sc">+</span></span>
+<span id="cb31-5"><a href="building-static-maps-in-r-studio.html#cb31-5" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">tm_layout</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="st">&quot;left&quot;</span>, <span class="st">&quot;center&quot;</span>),</span>
+<span id="cb31-6"><a href="building-static-maps-in-r-studio.html#cb31-6" aria-hidden="true" tabindex="-1"></a>                                <span class="at">frame=</span><span class="cn">FALSE</span>,</span>
+<span id="cb31-7"><a href="building-static-maps-in-r-studio.html#cb31-7" aria-hidden="true" tabindex="-1"></a>                                <span class="at">main.title=</span><span class="st">&quot;Partisan Composition of State Governments, 2022&quot;</span>,</span>
+<span id="cb31-8"><a href="building-static-maps-in-r-studio.html#cb31-8" aria-hidden="true" tabindex="-1"></a>                                <span class="at">main.title.size=</span><span class="dv">1</span>,</span>
+<span id="cb31-9"><a href="building-static-maps-in-r-studio.html#cb31-9" aria-hidden="true" tabindex="-1"></a>                                <span class="at">main.title.position=</span><span class="st">&quot;center&quot;</span>)<span class="sc">+</span></span>
+<span id="cb31-10"><a href="building-static-maps-in-r-studio.html#cb31-10" aria-hidden="true" tabindex="-1"></a>                       <span class="fu">tm_credits</span>(<span class="st">&quot;Map Author: Aditya Ranganath</span><span class="sc">\n</span><span class="st">Source: Ballotpedia&quot;</span>, <span class="at">size=</span><span class="fl">0.5</span>) <span class="co"># sets map credits and size</span></span>
+<span id="cb31-11"><a href="building-static-maps-in-r-studio.html#cb31-11" aria-hidden="true" tabindex="-1"></a>                    </span>
+<span id="cb31-12"><a href="building-static-maps-in-r-studio.html#cb31-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-13"><a href="building-static-maps-in-r-studio.html#cb31-13" aria-hidden="true" tabindex="-1"></a>usa_trifecta_map</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+</div>
+<div id="summary-script" class="section level2" number="2.8">
+<h2><span class="header-section-number">2.8</span> Summary Script</h2>
+<p>The following presents all of the steps we took to create our print map in one streamlined script; it assumes that the libraries are loaded, and that you are in the working directory that contains your data:</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="building-static-maps-in-r-studio.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in shapefile and assign to object named &quot;usa_shapefile&quot;</span></span>
+<span id="cb32-2"><a href="building-static-maps-in-r-studio.html#cb32-2" aria-hidden="true" tabindex="-1"></a>usa_shapefile<span class="ot">&lt;-</span><span class="fu">st_read</span>(<span class="st">&quot;usa_shapefile.shp&quot;</span>)</span></code></pre></div>
+<pre><code>## Reading layer `usa_shapefile&#39; from data source `/Users/adra7980/Documents/git_repositories/gistools_qda/data/usa_shapefile.shp&#39; using driver `ESRI Shapefile&#39;
+## Simple feature collection with 52 features and 3 fields
+## geometry type:  MULTIPOLYGON
+## dimension:      XY
+## bbox:           xmin: -4088650 ymin: -1696697 xmax: 2258200 ymax: 1565782
+## projected CRS:  USA_Contiguous_Albers_Equal_Area_Conic</code></pre>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="building-static-maps-in-r-studio.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in tabular CSV data containing data to map and assign to object named &quot;usa_trifecta&quot;</span></span>
+<span id="cb34-2"><a href="building-static-maps-in-r-studio.html#cb34-2" aria-hidden="true" tabindex="-1"></a>usa_trifecta<span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="st">&quot;usa_trifecta.csv&quot;</span>)</span>
+<span id="cb34-3"><a href="building-static-maps-in-r-studio.html#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-4"><a href="building-static-maps-in-r-studio.html#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Join &quot;usa_trifecta&quot; to &quot;usa_shapefile&quot; using &quot;abbrev&quot; as the join variable; use &quot;right_join&quot; to only keep records from &quot;usa_trifecta&quot; (which effectively deletes PR and DC); assign the joined dataset to a new object named &quot;usa_shapefile_trifecta&quot;</span></span>
+<span id="cb34-5"><a href="building-static-maps-in-r-studio.html#cb34-5" aria-hidden="true" tabindex="-1"></a>usa_shapefile_trifecta<span class="ot">&lt;-</span><span class="fu">right_join</span>(usa_shapefile, usa_trifecta, <span class="at">by=</span><span class="st">&quot;abbrev&quot;</span>)</span>
+<span id="cb34-6"><a href="building-static-maps-in-r-studio.html#cb34-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-7"><a href="building-static-maps-in-r-studio.html#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the composition variable as a factor variable; specify the levels in the order you want them to appear in the legend</span></span>
+<span id="cb34-8"><a href="building-static-maps-in-r-studio.html#cb34-8" aria-hidden="true" tabindex="-1"></a>usa_shapefile_trifecta<span class="ot">&lt;-</span>usa_shapefile_trifecta <span class="sc">%&gt;%</span> </span>
+<span id="cb34-9"><a href="building-static-maps-in-r-studio.html#cb34-9" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">mutate</span>(<span class="at">Composition=</span><span class="fu">factor</span>(Composition, <span class="at">levels=</span><span class="fu">c</span>(<span class="st">&quot;Democratic Trifecta&quot;</span>, <span class="st">&quot;Republican Trifecta&quot;</span>, <span class="st">&quot;Divided Government&quot;</span>))) </span>
+<span id="cb34-10"><a href="building-static-maps-in-r-studio.html#cb34-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-11"><a href="building-static-maps-in-r-studio.html#cb34-11" aria-hidden="true" tabindex="-1"></a><span class="co"># create a color vector; the first color will be used to map the first level, second category to map the second level, and so on:</span></span>
+<span id="cb34-12"><a href="building-static-maps-in-r-studio.html#cb34-12" aria-hidden="true" tabindex="-1"></a>colors<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;navy&quot;</span>, <span class="st">&quot;red3&quot;</span>, <span class="st">&quot;seashell&quot;</span>)</span>
+<span id="cb34-13"><a href="building-static-maps-in-r-studio.html#cb34-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-14"><a href="building-static-maps-in-r-studio.html#cb34-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Use tmap to create the map, and assign the map to an object named &quot;usa_trifecta_map&quot;</span></span>
+<span id="cb34-15"><a href="building-static-maps-in-r-studio.html#cb34-15" aria-hidden="true" tabindex="-1"></a>usa_trifecta_map<span class="ot">&lt;-</span><span class="fu">tm_shape</span>(usa_shapefile_trifecta)<span class="sc">+</span> <span class="co"># indicate sf object to be mapped</span></span>
+<span id="cb34-16"><a href="building-static-maps-in-r-studio.html#cb34-16" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">tm_polygons</span>(<span class="at">col=</span><span class="st">&quot;Composition&quot;</span>, <span class="co"># specify column to be mapped</span></span>
+<span id="cb34-17"><a href="building-static-maps-in-r-studio.html#cb34-17" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">palette=</span>colors,    <span class="co"># sets tolors</span></span>
+<span id="cb34-18"><a href="building-static-maps-in-r-studio.html#cb34-18" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">title=</span><span class="st">&quot;&quot;</span>)<span class="sc">+</span>         <span class="co"># specifies no title for legend</span></span>
+<span id="cb34-19"><a href="building-static-maps-in-r-studio.html#cb34-19" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">tm_layout</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="st">&quot;left&quot;</span>, <span class="st">&quot;center&quot;</span>), <span class="co"># sets legend position</span></span>
+<span id="cb34-20"><a href="building-static-maps-in-r-studio.html#cb34-20" aria-hidden="true" tabindex="-1"></a>                                <span class="at">frame=</span><span class="cn">FALSE</span>,         <span class="co"># removes map frame/bounding box</span></span>
+<span id="cb34-21"><a href="building-static-maps-in-r-studio.html#cb34-21" aria-hidden="true" tabindex="-1"></a>                                <span class="at">main.title=</span><span class="st">&quot;Partisan Composition of State Governments, 2022&quot;</span>, <span class="co"># sets map title</span></span>
+<span id="cb34-22"><a href="building-static-maps-in-r-studio.html#cb34-22" aria-hidden="true" tabindex="-1"></a>                                <span class="at">main.title.size=</span><span class="dv">1</span>,   <span class="co"># sets map title size</span></span>
+<span id="cb34-23"><a href="building-static-maps-in-r-studio.html#cb34-23" aria-hidden="true" tabindex="-1"></a>                                <span class="at">main.title.position=</span><span class="st">&quot;center&quot;</span>)<span class="sc">+</span> <span class="co"># sets map title position</span></span>
+<span id="cb34-24"><a href="building-static-maps-in-r-studio.html#cb34-24" aria-hidden="true" tabindex="-1"></a>                       <span class="fu">tm_credits</span>(<span class="st">&quot;Map Author: Aditya Ranganath</span><span class="sc">\n</span><span class="st">Source: Ballotpedia&quot;</span>, <span class="at">size=</span><span class="fl">0.5</span>) <span class="co"># adds credits</span></span>
+<span id="cb34-25"><a href="building-static-maps-in-r-studio.html#cb34-25" aria-hidden="true" tabindex="-1"></a>                    </span>
+<span id="cb34-26"><a href="building-static-maps-in-r-studio.html#cb34-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Prints map</span></span>
+<span id="cb34-27"><a href="building-static-maps-in-r-studio.html#cb34-27" aria-hidden="true" tabindex="-1"></a>usa_trifecta_map</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
 </div>
 </div>
             </section>

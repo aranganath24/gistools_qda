@@ -24,87 +24,117 @@ After your libraries are successfully installed and loaded, set your working dir
 setwd("/Users/adra7980/Documents/git_repositories/gistools_qda/data")
 ```
 
-If you don't know the relevant file path, you can set your working directory manually by opening the ```Session``` menu, scrolling down to 
+If you don't know the relevant file path, you can set your working directory manually by opening the ```Session``` menu, scrolling down to ```Set Working Directory```, clicking ```Choose Directory```, and then following the prompts.
 
 ## Read in a spatial dataset
 
+First, let's read in our spatial dataset, titled ```usa_shapefile.shp``` using the ```st_read``` function, and then assigning the spatial dataset to a new object named ```usa_shapefile```
+
 ```{r, echo=-1}
 setwd("/Users/adra7980/Documents/git_repositories/gistools_qda/data")
-# Read in the shapefile named "usa_shapefile.shp"
+# Read in the shapefile named "usa_shapefile.shp" and assign to new object named "usa_shapefile"
 usa_shapefile<-st_read("usa_shapefile.shp")
 ```
 
 ## View the spatial dataset's attribute table
 
+To view the spatial dataset's attributes, simply print its name:
+
 ```{r}
 usa_shapefile
 ```
 
+To view the attribute table in R Studio's data viewer, pass it to the ```View``` function:
+
+```{r}
+View(usa_shapefile)
+```
+
 ## Map the spatial dataset 
+
+To view render the spatial dataset's geographic attributes, we can use the ```tmap``` package. First, pass the name of the spatial object (```usa_shapefile```) to the ```tm_shape``` function, and then indicate that the spatial attributes are polyons with the ```tm_polygons``` function. The two functions should be connected with a ```+``` sign
 
 ```{r, fig.asp=0.5, echo=-1}
 tmap_mode("plot")
+# Use the "tm_shape" and "tm_polygons" function to render the polygons in the spatial dataset
 tm_shape(usa_shapefile)+
   tm_polygons()
 ```
 
+The polygons (here, US states) will be printed in the "Plots" tab of the R Studio interface. 
+
+For convenience, we can assign the basic map of the shapefile's polygons to its own object; here we'll assign it to an object named ```usa_map```.
+
 ```{r, echo=-1}
 tmap_mode("plot")
+# Assigns map of "usa_shapefile" geographic attributes to a new object named "usa_map"
 usa_map<-tm_shape(usa_shapefile)+
             tm_polygons()
 ```
 
+Now, we simply have to print ```usa_map``` to view the geographic attributes of ```usa_shapefile```.
 
 ```{r, fig.asp=0.5, echo=-1}
 tmap_mode("plot")
 usa_map
 ```
 
-## Read in a tabular dataset with the information to map
+## Read in the tabular dataset containing the information to map
+
+Now, let's read in our CSV file, which contains the state government data we'd like to map. To do so, we can pass the name of the CSV file to the ```read_csv``` function. We'll assign the CSV file to an object named ```usa_trifecta```
 
 ```{r, echo=-1}
 setwd("/Users/adra7980/Documents/git_repositories/gistools_qda/data")
-usa_trifecta_data<-read_csv("usa_trifecta.csv")
-```
-
-```{r}
-usa_trifecta_data
-```
-
-## Load Tabular data
-
-```{r, echo=-1}
-setwd("/Users/adra7980/Documents/git_repositories/gistools_qda/data")
+# Reads in "usa_trifecta.csv" and assigns the data to an object named "usa_trifecta"
 usa_trifecta<-read_csv("usa_trifecta.csv")
 ```
+
+To open the dataset, type the name of the object in the console (or run it from your script):
 
 ```{r}
 usa_trifecta
 ```
 
-## Merge data
+To view the CSV data in R Studio's data viewer, pass the object's name to the ```View``` function:
 
 ```{r}
+View(usa_trifecta)
+```
+
+## Merge data
+
+Now, let's merge our tabular CSV data into the spatial dataset, and assign the merged dataset to a new object named ```usa_shapefile_trifecta```. To do so, we'll use the ```right_join``` function. The first argument is the spatial object (```usa_shapefile```), while the second argument is the tabular data object (```usa_trifecta```). The third argument, ```by="abbrev``` indicates that the two datasets are to be joined based on the information contained in the ```abbrev``` field (i.e. 2-letter state codes). 
+
+By using ```right_join```, we're specifying that we want to keep all the records in ```usa_trifecta```, and discard any records that are in ```usa_shapefile``` but not ```usa_trifecta```. This effectively removes DC and Puerto Rico from our joined dataset, which is appropriate in the context of this exercise, since these are not currently states. 
+
+```{r}
+# Joins the "usa_trifecta" data to "usa_shapefile" based on the "abbrev" field that is in both datasets; the joined dataset is assigned to a new object named "usa_shapefile_trifecta"
 usa_shapefile_trifecta<-right_join(usa_shapefile, usa_trifecta, by="abbrev" )
 ```
 
+Before moving on, observe the contents of ```usa_shapefile_trifecta``` to ensure that the join has succeeded.
+
 ```{r}
+# Prints contents of "usa_shapefile_trifecta"
 usa_shapefile_trifecta
 ```
 
 ## Map the trifecta data
 
-Start with a rough map:
+Now, we're ready to map our data. Let's start with a very rough map, which we'll assign to an object named ```usa_trifecta_map```. As before, we declare the spatial object that is the basis for the map (here, ```usa_shapefile_trifecta```) using the ```tm_shape``` function. Then, we declare the column to be mapped (here, ```Composition```) within the ```tm_polygons``` function:
 
 ```{r, fig.asp=0.5, echo=-1}
 tmap_mode("plot")
+# Makes basic map of categories of interest
 usa_trifecta_map<-tm_shape(usa_shapefile_trifecta)+
                     tm_polygons(col="Composition")
-
+# Prints map
 usa_trifecta_map
 ```
 
-Adjust the color scheme, such that it is red for a Republican trifecta, dark blue for a democratic trifecta, and 
+This default color scheme is not very intuitive, so let's change it, such that Democratic trifectas are dark blue, Republican trifectas are dark red, and states with divided government are beige. 
+
+To work intuitively with colors when dealing with categorical data, it is helpful to first declare the categorical data as a factor variable; specify the levels in the order you want your categories in the legend. 
 
 ```{r, echo=-1}
 tmap_mode("plot")
@@ -113,9 +143,13 @@ usa_shapefile_trifecta<-usa_shapefile_trifecta %>%
                           mutate(Composition=factor(Composition, levels=c("Democratic Trifecta", "Republican Trifecta", "Divided Government")))
 ```
 
+Now, create a vector of colors that corresponds to these levels, and assign this vector to an object named ` ```colors```. The first color in the ```colors``` vector will be used for the "Democratic Trifecta" category, the second color for "Republican Trifecta", and so on. The color codes can be found in this helpful color [cheatsheet](https://www.nceas.ucsb.edu/sites/default/files/2020-04/colorPaletteCheatsheet.pdf). 
+
+Set the ```colors``` vector equal to ```palette``` within the ```tm_polygons``` function:
+
 ```{r, fig.asp=0.5, echo=-1}
 tmap_mode("plot")
-# Maps data with custom colors; note the changed order in the legend
+# Maps data with custom colors; also, note the changed order in the legend
 colors<-c("navy", "red3", "seashell")
 usa_trifecta_map<-tm_shape(usa_shapefile_trifecta)+
                     tm_polygons(col="Composition", 
@@ -124,46 +158,111 @@ usa_trifecta_map<-tm_shape(usa_shapefile_trifecta)+
 usa_trifecta_map
 ```
 
-Now, let's shift the legend, remove the legend title, and add a title for the map:
+Now, let's shift the legend, remove the bounding box, remove the legend title, and add a title for the map. 
 
 ```{r, fig.asp=0.5, echo=-1}
 tmap_mode("plot")
-usa_trifecta_map<-usa_trifecta_map<-tm_shape(usa_shapefile_trifecta)+
-                                      tm_polygons(col="Composition", 
-                                                  palette=colors,
-                                                  title="")+
-                                    tm_layout(legend.position = c("left", "center"),
-                                              frame=FALSE,
-                                              main.title="Partisan Composition of State Governments, 2022",
-                                              main.title.size=1,
-                                              main.title.position="center")
+usa_trifecta_map<-usa_trifecta_map<-tm_shape(usa_shapefile_trifecta)+ # indicates spatial object to map
+                                      tm_polygons(col="Composition", # indicates column with data to map
+                                                  palette=colors,    # sets colors
+                                                  title="")+         # removes legend title
+                                    tm_layout(legend.position = c("left", "center"), # sets legend position
+                                              frame=FALSE,          # removes map frame
+                                              main.title="Partisan Composition of State Governments, 2022", # sets map title
+                                              main.title.size=1, # sets map title size
+                                              main.title.position="center") # sets map title position
                     
 
+usa_trifecta_map
+```
+
+Now, let's add a credits section, to indicate the map's author and give credit to the source of the data. We can do so with the ```tm_credits``` function: 
+
+```{r}
+usa_trifecta_map<-tm_shape(usa_shapefile_trifecta)+
+                      tm_polygons(col="Composition", 
+                                  palette=colors,
+                                  title="")+
+                      tm_layout(legend.position = c("left", "center"),
+                                frame=FALSE,
+                                main.title="Partisan Composition of State Governments, 2022",
+                                main.title.size=1,
+                                main.title.position="center")+
+                       tm_credits("Map Author: Aditya Ranganath\nSource: Ballotpedia", size=0.5) # sets map credits and size
+                    
+
+usa_trifecta_map
+```
+
+## Summary Script
+
+The following presents all of the steps we took to create our print map in one streamlined script; it assumes that the libraries are loaded, and that you are in the working directory that contains your data:
+
+```{r, echo=c(-1, -2), fig.asp=0.5, warning=F, message=F}
+tmap_mode("plot")
+setwd("/Users/adra7980/Documents/git_repositories/gistools_qda/data")
+# Read in shapefile and assign to object named "usa_shapefile"
+usa_shapefile<-st_read("usa_shapefile.shp")
+
+# Read in tabular CSV data containing data to map and assign to object named "usa_trifecta"
+usa_trifecta<-read_csv("usa_trifecta.csv")
+
+# Join "usa_trifecta" to "usa_shapefile" using "abbrev" as the join variable; use "right_join" to only keep records from "usa_trifecta" (which effectively deletes PR and DC); assign the joined dataset to a new object named "usa_shapefile_trifecta"
+usa_shapefile_trifecta<-right_join(usa_shapefile, usa_trifecta, by="abbrev")
+
+# Set the composition variable as a factor variable; specify the levels in the order you want them to appear in the legend
+usa_shapefile_trifecta<-usa_shapefile_trifecta %>% 
+                          mutate(Composition=factor(Composition, levels=c("Democratic Trifecta", "Republican Trifecta", "Divided Government"))) 
+
+# create a color vector; the first color will be used to map the first level, second category to map the second level, and so on:
+colors<-c("navy", "red3", "seashell")
+
+# Use tmap to create the map, and assign the map to an object named "usa_trifecta_map"
+usa_trifecta_map<-tm_shape(usa_shapefile_trifecta)+ # indicate sf object to be mapped
+                      tm_polygons(col="Composition", # specify column to be mapped
+                                  palette=colors,    # sets tolors
+                                  title="")+         # specifies no title for legend
+                      tm_layout(legend.position = c("left", "center"), # sets legend position
+                                frame=FALSE,         # removes map frame/bounding box
+                                main.title="Partisan Composition of State Governments, 2022", # sets map title
+                                main.title.size=1,   # sets map title size
+                                main.title.position="center")+ # sets map title position
+                       tm_credits("Map Author: Aditya Ranganath\nSource: Ballotpedia", size=0.5) # adds credits
+                    
+# Prints map
 usa_trifecta_map
 ```
 
 
 # Building Web Maps in R Studio
 
+To create a webmap/interactive map, simply use the ```tmap_mode``` function to set the mode to ```view```:
 
 ```{r}
 tmap_mode("view")
 ```
 
+Now, when you plot the map, it will appear interactive:
+
 ```{r}
 usa_trifecta_map
 ```
 
+To shift back to a static map, set the mode back to ```plot```:
 
 ```{r}
 tmap_mode("plot")
 ```
 
+And now, when printing the map again, it will be displayed again as a static map. 
+
 ```{r}
 usa_trifecta_map
 ```
 
-Make a webmap that shifts Alaska and Hawaii back to their actual locations:
+The webmap looks a little strange with Alaska and Hawaii shifted. So, let's make a webmap that shifts Alaska and Hawaii back to their actual locations.
+
+To do so, we'll read in the shapefile with Alaska and Hawaii in their proper locations, and assign it to an object named ```usa_unshifted```.
 
 ```{r, echo=-1}
 setwd("/Users/adra7980/Documents/git_repositories/gistools_qda/data")
@@ -174,6 +273,7 @@ usa_unshifted<-st_read("usa_unshifted.shp")
 usa_unshifted
 ```
 
+Then, we'll go through the same steps as above, to essentially recreate our map with this new spatial dataset. When we go back to ```View``` mode and print our new map object, we'll see a dynamic map with Hawaii and Alaska in their original locations. 
 
 ```{r}
 # join tabular data to "usa_unshifted"
@@ -208,13 +308,21 @@ usa_trifecta_map_unshifed
 tmap_mode("plot")
 ```
 
-
 # Exporting Maps from R Studio
 
+First, let's export our print map to our working directory, using the ```tmap_save``` function. The first argument is the name of the object to be exported, while the second argument is the desired name and extension of the exported file containing the map. For example, if we wanted to export the map as a png file, we would use the following:
 
+```{r}
+# Writes print map ("usa_trifecta_map") to working directory as png file
+tmap_save(usa_trifecta_map, "usa_trifecta_map_export.png")
+```
 
-on factors: [https://r4ds.had.co.nz/factors.html](https://r4ds.had.co.nz/factors.html). 
+If you want to export a webmap, use the same functions and arguments, but make sure to use an html extension for the output files; an interactive map will be saved to your working directory, which you can then embed on a website.
 
+```{r}
+# Writes webmap to working directory as html file
+tmap_save(usa_trifecta_map, "usa_trifecta_map_unshifed.html")
+```
 
 
 

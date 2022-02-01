@@ -6,3 +6,10 @@ site: bookdown::bookdown_site
 ---
 # Introduction
 
+This tutorial provides a brief overview on how to map categorical data using R Studio and QGIS. 
+
+We will be mapping data on the partisan composition of state governments in the United States. In particular, we will visualize whether a state government is characterized by unified Democratic control (a "Democratic Trifecta"), unified Republican control (a "Republican Trifecta"), or divided government. 
+
+Current data on trifectas/divided government comes from  [Ballotpedia](https://www.google.com/search?client=firefox-b-1-d&q=ballotpedia+trifectas). 
+
+Data to complete the exercises can be found here: [https://drive.google.com/drive/folders/1OsN9qxzflMAu7HAWz1qGffUkGZbnblxt?usp=sharing](https://drive.google.com/drive/folders/1OsN9qxzflMAu7HAWz1qGffUkGZbnblxt?usp=sharing). 

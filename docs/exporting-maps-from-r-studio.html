@@ -154,10 +154,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.2" data-path="building-static-maps-in-r-studio.html"><a href="building-static-maps-in-r-studio.html#read-in-a-spatial-dataset"><i class="fa fa-check"></i><b>2.2</b> Read in a spatial dataset</a></li>
 <li class="chapter" data-level="2.3" data-path="building-static-maps-in-r-studio.html"><a href="building-static-maps-in-r-studio.html#view-the-spatial-datasets-attribute-table"><i class="fa fa-check"></i><b>2.3</b> View the spatial dataset’s attribute table</a></li>
 <li class="chapter" data-level="2.4" data-path="building-static-maps-in-r-studio.html"><a href="building-static-maps-in-r-studio.html#map-the-spatial-dataset"><i class="fa fa-check"></i><b>2.4</b> Map the spatial dataset</a></li>
-<li class="chapter" data-level="2.5" data-path="building-static-maps-in-r-studio.html"><a href="building-static-maps-in-r-studio.html#read-in-a-tabular-dataset-with-the-information-to-map"><i class="fa fa-check"></i><b>2.5</b> Read in a tabular dataset with the information to map</a></li>
-<li class="chapter" data-level="2.6" data-path="building-static-maps-in-r-studio.html"><a href="building-static-maps-in-r-studio.html#load-tabular-data"><i class="fa fa-check"></i><b>2.6</b> Load Tabular data</a></li>
-<li class="chapter" data-level="2.7" data-path="building-static-maps-in-r-studio.html"><a href="building-static-maps-in-r-studio.html#merge-data"><i class="fa fa-check"></i><b>2.7</b> Merge data</a></li>
-<li class="chapter" data-level="2.8" data-path="building-static-maps-in-r-studio.html"><a href="building-static-maps-in-r-studio.html#map-the-trifecta-data"><i class="fa fa-check"></i><b>2.8</b> Map the trifecta data</a></li>
+<li class="chapter" data-level="2.5" data-path="building-static-maps-in-r-studio.html"><a href="building-static-maps-in-r-studio.html#read-in-the-tabular-dataset-containing-the-information-to-map"><i class="fa fa-check"></i><b>2.5</b> Read in the tabular dataset containing the information to map</a></li>
+<li class="chapter" data-level="2.6" data-path="building-static-maps-in-r-studio.html"><a href="building-static-maps-in-r-studio.html#merge-data"><i class="fa fa-check"></i><b>2.6</b> Merge data</a></li>
+<li class="chapter" data-level="2.7" data-path="building-static-maps-in-r-studio.html"><a href="building-static-maps-in-r-studio.html#map-the-trifecta-data"><i class="fa fa-check"></i><b>2.7</b> Map the trifecta data</a></li>
+<li class="chapter" data-level="2.8" data-path="building-static-maps-in-r-studio.html"><a href="building-static-maps-in-r-studio.html#summary-script"><i class="fa fa-check"></i><b>2.8</b> Summary Script</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="building-web-maps-in-r-studio.html"><a href="building-web-maps-in-r-studio.html"><i class="fa fa-check"></i><b>3</b> Building Web Maps in R Studio</a></li>
 <li class="chapter" data-level="4" data-path="exporting-maps-from-r-studio.html"><a href="exporting-maps-from-r-studio.html"><i class="fa fa-check"></i><b>4</b> Exporting Maps from R Studio</a></li>
@@ -193,7 +193,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="exporting-maps-from-r-studio" class="section level1" number="4">
 <h1><span class="header-section-number">4</span> Exporting Maps from R Studio</h1>
-<p>on factors: <a href="https://r4ds.had.co.nz/factors.html">https://r4ds.had.co.nz/factors.html</a>.</p>
+<p>First, let’s export our print map to our working directory, using the <code>tmap_save</code> function. The first argument is the name of the object to be exported, while the second argument is the desired name and extension of the exported file containing the map. For example, if we wanted to export the map as a png file, we would use the following:</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="exporting-maps-from-r-studio.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Writes print map (&quot;usa_trifecta_map&quot;) to working directory as png file</span></span>
+<span id="cb51-2"><a href="exporting-maps-from-r-studio.html#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tmap_save</span>(usa_trifecta_map, <span class="st">&quot;usa_trifecta_map_export.png&quot;</span>)</span></code></pre></div>
+<pre><code>## Map saved to usa_trifecta_map_export.png</code></pre>
+<pre><code>## Resolution: 2929.035 by 1505.615 pixels</code></pre>
+<pre><code>## Size: 9.76345 by 5.018718 inches (300 dpi)</code></pre>
+<p>If you want to export a webmap, use the same functions and arguments, but make sure to use an html extension for the output files; an interactive map will be saved to your working directory, which you can then embed on a website.</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="exporting-maps-from-r-studio.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Writes webmap to working directory as html file</span></span>
+<span id="cb55-2"><a href="exporting-maps-from-r-studio.html#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tmap_save</span>(usa_trifecta_map, <span class="st">&quot;usa_trifecta_map_unshifed.html&quot;</span>)</span></code></pre></div>
+<pre><code>## Credits not supported in view mode.</code></pre>
+<pre><code>## legend.postion is used for plot mode. Use view.legend.position in tm_view to set the legend position in view mode.</code></pre>
+<pre><code>## Interactive map saved to /Users/adra7980/Documents/git_repositories/gistools_qda/usa_trifecta_map_unshifed.html</code></pre>
 
 </div>
 
